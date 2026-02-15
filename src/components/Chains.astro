@@ -1,0 +1,91 @@
+---
+const chains = [
+  { name: 'Cardano', logo: '/images/chains/cardano.png' },
+  { name: 'Bitcoin', logo: '/images/chains/bitcoin.png' },
+  { name: 'Ethereum', logo: '/images/chains/ethereum.png' },
+  { name: 'Solana', logo: '/images/chains/solana.png' },
+  { name: 'Polygon', logo: '/images/chains/polygon.png' },
+  { name: 'Base', logo: '/images/chains/base.png' },
+  { name: 'Algorand', logo: '/images/chains/algorand.png' },
+  { name: 'Arbitrum', logo: '/images/chains/arbitrum.png' },
+  { name: 'Avalanche', logo: '/images/chains/avalanche.png' },
+  { name: 'BNB Chain', logo: '/images/chains/bnb.png' },
+  { name: 'Tron', logo: '/images/chains/tron.png' },
+];
+---
+
+<section class="chains">
+  <div class="container">
+    <p class="chains-label">Supported Blockchains</p>
+    <div class="chains-grid">
+      {chains.map((chain) => (
+        <div class="chain">
+          <img src={chain.logo} alt={chain.name} width="40" height="40" loading="lazy" />
+          <span class="chain-name">{chain.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .chains {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-primary);
+  }
+
+  .chains-label {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+  }
+
+  .chains-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 28px 36px;
+  }
+
+  .chain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform var(--transition);
+  }
+
+  .chain:hover {
+    transform: translateY(-4px);
+  }
+
+  .chain img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .chain-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 560px) {
+    .chains-grid {
+      gap: 20px 28px;
+    }
+
+    .chain img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+</style>
