@@ -1,22 +1,22 @@
 ---
 const chains = [
-  { name: 'Cardano', logo: '/images/chains/cardano.png' },
-  { name: 'Bitcoin', logo: '/images/chains/bitcoin.png' },
-  { name: 'Ethereum', logo: '/images/chains/ethereum.png' },
-  { name: 'Solana', logo: '/images/chains/solana.png' },
-  { name: 'Polygon', logo: '/images/chains/polygon.png' },
-  { name: 'Base', logo: '/images/chains/base.png' },
-  { name: 'Algorand', logo: '/images/chains/algorand.png' },
-  { name: 'Arbitrum', logo: '/images/chains/arbitrum.png' },
-  { name: 'Avalanche', logo: '/images/chains/avalanche.png' },
-  { name: 'BNB Chain', logo: '/images/chains/bnb.png' },
-  { name: 'Tron', logo: '/images/chains/tron.png' },
-  { name: 'XRP Ledger', logo: '/images/chains/xrp.png' },
-  { name: 'Hedera', logo: '/images/chains/hedera.png' },
-  { name: 'MultiversX', logo: '/images/chains/multiversx.png' },
-  { name: 'Sui', logo: '/images/chains/sui.png' },
-  { name: 'Aptos', logo: '/images/chains/aptos.png' },
-  { name: 'Filecoin', logo: '/images/chains/filecoin.png' },
+  { name: 'Cardano', logo: '/images/chains/cardano.png', url: 'https://cardano.org' },
+  { name: 'Bitcoin', logo: '/images/chains/bitcoin.png', url: 'https://bitcoin.org' },
+  { name: 'Ethereum', logo: '/images/chains/ethereum.png', url: 'https://ethereum.org' },
+  { name: 'Solana', logo: '/images/chains/solana.png', url: 'https://solana.com' },
+  { name: 'Polygon', logo: '/images/chains/polygon.png', url: 'https://polygon.technology' },
+  { name: 'Base', logo: '/images/chains/base.png', url: 'https://base.org' },
+  { name: 'Algorand', logo: '/images/chains/algorand.png', url: 'https://algorand.co' },
+  { name: 'Arbitrum', logo: '/images/chains/arbitrum.png', url: 'https://arbitrum.io' },
+  { name: 'Avalanche', logo: '/images/chains/avalanche.png', url: 'https://avax.network' },
+  { name: 'BNB Chain', logo: '/images/chains/bnb.png', url: 'https://bnbchain.org' },
+  { name: 'Tron', logo: '/images/chains/tron.png', url: 'https://tron.network' },
+  { name: 'XRP Ledger', logo: '/images/chains/xrp.png', url: 'https://xrpl.org' },
+  { name: 'Hedera', logo: '/images/chains/hedera.png', url: 'https://hedera.com' },
+  { name: 'MultiversX', logo: '/images/chains/multiversx.png', url: 'https://multiversx.com' },
+  { name: 'Sui', logo: '/images/chains/sui.png', url: 'https://sui.io' },
+  { name: 'Aptos', logo: '/images/chains/aptos.png', url: 'https://aptosfoundation.org' },
+  { name: 'Filecoin', logo: '/images/chains/filecoin.png', url: 'https://filecoin.io' },
 ];
 ---
 
@@ -25,10 +25,10 @@ const chains = [
     <p class="chains-label">Supported Blockchains</p>
     <div class="chains-grid">
       {chains.map((chain) => (
-        <div class="chain">
+        <a href={chain.url} class="chain" target="_blank" rel="noopener noreferrer">
           <img src={chain.logo} alt={chain.name} width="40" height="40" loading="lazy" />
           <span class="chain-name">{chain.name}</span>
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -64,6 +64,7 @@ const chains = [
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    text-decoration: none;
     transition: transform var(--transition);
   }
 

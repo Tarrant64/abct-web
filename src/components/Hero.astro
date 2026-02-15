@@ -1,9 +1,4 @@
 ---
-const stats = [
-  { value: '17', label: 'Blockchains' },
-  { value: '7', label: 'Exchanges' },
-  { value: '5', label: 'Themes' },
-];
 ---
 
 <section class="hero bg-gradient">
@@ -37,13 +32,9 @@ const stats = [
         Get Started
       </a>
     </div>
-    <div class="hero-stats">
-      {stats.map((stat) => (
-        <div class="hero-stat">
-          <span class="hero-stat-value">{stat.value}</span>
-          <span class="hero-stat-label">{stat.label}</span>
-        </div>
-      ))}
+
+    <div class="word-flow" aria-hidden="true">
+      <span>Layer 1</span><span>DeFi</span><span>Multi-Chain</span><span>Layer 2</span><span>NFTs</span><span>Staking</span><span>Governance</span><span>Privacy</span><span>Exchanges</span><span>Liquid Staking</span><span>Layer 0</span><span>DePIN</span><span>RWAs</span><span>DEX</span><span>DAOs</span><span>ZK</span><span>AI Agents</span><span>Lending</span><span>Cross-Chain</span><span>Rollups</span><span>Perpetuals</span><span>CEX</span><span>Bridges</span><span>Yield</span><span>Oracles</span><span>Restaking</span><span>GameFi</span><span>Memecoins</span><span>Modular</span><span>SocialFi</span><span>Sidechains</span>
     </div>
   </div>
 </section>
@@ -102,35 +93,61 @@ const stats = [
     margin-bottom: 64px;
   }
 
-  .hero-stats {
+  /* Word Flow */
+  .word-flow {
     display: flex;
-    gap: 60px;
-    padding: 32px 48px;
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    max-width: 800px;
+    padding: 0 24px;
+    user-select: none;
   }
 
-  .hero-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
+  .word-flow span {
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
   }
 
-  .hero-stat-value {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent);
-    font-family: var(--font-mono);
+  .word-flow span:hover {
+    opacity: 1;
   }
 
-  .hero-stat-label {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
+  /* Gradient color shift across words */
+  .word-flow span:nth-child(31n+1)  { color: #00d26a; }
+  .word-flow span:nth-child(31n+2)  { color: #00d47e; }
+  .word-flow span:nth-child(31n+3)  { color: #00d692; }
+  .word-flow span:nth-child(31n+4)  { color: #00d8a5; }
+  .word-flow span:nth-child(31n+5)  { color: #00d9b8; }
+  .word-flow span:nth-child(31n+6)  { color: #00dacb; }
+  .word-flow span:nth-child(31n+7)  { color: #00dbdd; }
+  .word-flow span:nth-child(31n+8)  { color: #00d5e8; }
+  .word-flow span:nth-child(31n+9)  { color: #00cef0; }
+  .word-flow span:nth-child(31n+10) { color: #00c5f5; }
+  .word-flow span:nth-child(31n+11) { color: #00bbf7; }
+  .word-flow span:nth-child(31n+12) { color: #00b0f5; }
+  .word-flow span:nth-child(31n+13) { color: #00a4f0; }
+  .word-flow span:nth-child(31n+14) { color: #0098ea; }
+  .word-flow span:nth-child(31n+15) { color: #008ce3; }
+  .word-flow span:nth-child(31n+16) { color: #0080dc; }
+  .word-flow span:nth-child(31n+17) { color: #1a7dd8; }
+  .word-flow span:nth-child(31n+18) { color: #3380d5; }
+  .word-flow span:nth-child(31n+19) { color: #4d84d2; }
+  .word-flow span:nth-child(31n+20) { color: #6688cf; }
+  .word-flow span:nth-child(31n+21) { color: #7f8dcc; }
+  .word-flow span:nth-child(31n+22) { color: #9991ca; }
+  .word-flow span:nth-child(31n+23) { color: #b296c8; }
+  .word-flow span:nth-child(31n+24) { color: #c89bc6; }
+  .word-flow span:nth-child(31n+25) { color: #d4a0c4; }
+  .word-flow span:nth-child(31n+26) { color: #dba5c2; }
+  .word-flow span:nth-child(31n+27) { color: #d4a8b8; }
+  .word-flow span:nth-child(31n+28) { color: #c8b0a8; }
+  .word-flow span:nth-child(31n+29) { color: #b8bc92; }
+  .word-flow span:nth-child(31n+30) { color: #8cc87a; }
+  .word-flow span:nth-child(31n+0)  { color: #50d068; }
 
   @media (max-width: 768px) {
     .hero {
@@ -155,13 +172,12 @@ const stats = [
       justify-content: center;
     }
 
-    .hero-stats {
-      gap: 32px;
-      padding: 24px 32px;
+    .word-flow {
+      gap: 8px 14px;
     }
 
-    .hero-stat-value {
-      font-size: 1.5rem;
+    .word-flow span {
+      font-size: 0.9rem;
     }
   }
 
@@ -170,9 +186,8 @@ const stats = [
       font-size: 2.2rem;
     }
 
-    .hero-stats {
-      gap: 20px;
-      padding: 20px 24px;
+    .word-flow span {
+      font-size: 0.8rem;
     }
   }
 </style>

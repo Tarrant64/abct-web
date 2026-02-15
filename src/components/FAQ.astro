@@ -35,6 +35,11 @@ const faqs = [
     answer:
       'ABCT runs as a web application, so you can access it from any device on your local network. For remote access, you can set up a reverse proxy with Nginx or Caddy, or use a VPN to your home network.',
   },
+  {
+    question: "Don't see your chain, DeFi protocol, or governance feature?",
+    answer:
+      'ABCT is actively developed and new chains and features are added regularly. If there\'s a blockchain, DeFi integration, or governance tool you\'d like to see, <a href="https://github.com/Tarrant64/abct/issues" target="_blank" rel="noopener noreferrer">open a request on GitHub</a> — feature requests and suggestions are always welcome.',
+  },
 ];
 ---
 
@@ -54,7 +59,7 @@ const faqs = [
             </svg>
           </summary>
           <div class="faq-answer">
-            <p>{faq.answer}</p>
+            <p set:html={faq.answer} />
           </div>
         </details>
       ))}
