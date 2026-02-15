@@ -1,0 +1,128 @@
+---
+const faqs = [
+  {
+    question: 'What is ABCT?',
+    answer:
+      'ABCT (A Better Crypto Tracker) is a self-hosted, multi-chain cryptocurrency portfolio tracker. It runs in a Docker container on your own hardware, giving you a unified view of your assets across 11 blockchains and 7 exchanges.',
+  },
+  {
+    question: 'What blockchains are supported?',
+    answer:
+      'ABCT supports Cardano, Bitcoin, Ethereum, Solana, Polygon, Base, Algorand, Arbitrum, Avalanche, BNB Chain, and Tron. Cardano has the deepest integration with stake pool, governance, and DeFi tracking.',
+  },
+  {
+    question: 'Is it free and open source?',
+    answer:
+      'Yes! ABCT is fully open source under the MIT license. You can view, modify, and self-host the code at no cost. Check the GitHub repository for the full source.',
+  },
+  {
+    question: 'How do I install it?',
+    answer:
+      'ABCT runs as a single Docker container. Pull the image, set your environment variables (wallet addresses and optional API keys), and start the container. You\'ll be up and running in under a minute. See the Quick Start guide on GitHub.',
+  },
+  {
+    question: 'Is my data safe and private?',
+    answer:
+      'Absolutely. ABCT runs entirely on your own hardware. There is no cloud component, no telemetry, and no data ever leaves your machine. Your wallet addresses and portfolio data stay local in a SQLite database.',
+  },
+  {
+    question: 'Does it need API keys?',
+    answer:
+      'Some chains work without any API keys (like Cardano and Bitcoin). Others work better with free API keys from providers like Etherscan, Solscan, or Moralis. Exchange integrations require API keys from the respective exchanges with read-only permissions.',
+  },
+  {
+    question: 'Can I access it remotely?',
+    answer:
+      'ABCT runs as a web application, so you can access it from any device on your local network. For remote access, you can set up a reverse proxy with Nginx or Caddy, or use a VPN to your home network.',
+  },
+];
+---
+
+<section class="section faq" id="faq">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <p class="section-subtitle">
+      Common questions about ABCT and how it works.
+    </p>
+    <div class="faq-list">
+      {faqs.map((faq, i) => (
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>{faq.question}</span>
+            <svg class="faq-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color var(--transition);
+  }
+
+  .faq-item[open] {
+    border-color: var(--border-accent);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    list-style: none;
+    user-select: none;
+    transition: color var(--transition);
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-question:hover {
+    color: var(--accent);
+  }
+
+  .faq-chevron {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    transition: transform var(--transition);
+  }
+
+  .faq-item[open] .faq-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+
+  .faq-answer {
+    padding: 0 24px 20px;
+  }
+
+  .faq-answer p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+</style>

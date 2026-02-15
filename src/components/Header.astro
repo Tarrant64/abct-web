@@ -1,0 +1,194 @@
+---
+const navLinks = [
+  { href: '#features', label: 'Features' },
+  { href: '#screenshots', label: 'Screenshots' },
+  { href: '#faq', label: 'FAQ' },
+  { href: 'https://github.com/Tarrant64/abct', label: 'GitHub', external: true },
+];
+---
+
+<header class="header" id="header">
+  <div class="header-container">
+    <a href="/" class="header-logo">
+      <img src="/images/abct-logo.png" alt="ABCT Logo" width="40" height="40" />
+      <span class="header-logo-text">ABCT</span>
+    </a>
+
+    <nav class="header-nav" id="nav">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="header-nav-link"
+          {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {link.label}
+          {link.external && (
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.5 1H11V8.5M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          )}
+        </a>
+      ))}
+    </nav>
+
+    <button class="header-menu-btn" id="menu-btn" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 16px 24px;
+    background: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: all var(--transition);
+  }
+
+  .header.scrolled {
+    padding: 10px 24px;
+    background: rgba(26, 26, 46, 0.95);
+  }
+
+  .header-container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .header-logo img {
+    border-radius: 8px;
+  }
+
+  .header-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .header-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+
+  .header-nav-link:hover {
+    color: var(--accent);
+  }
+
+  .header-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .header-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: all var(--transition);
+  }
+
+  .header-menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .header-menu-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header-menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  @media (max-width: 768px) {
+    .header-menu-btn {
+      display: flex;
+    }
+
+    .header-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(26, 26, 46, 0.98);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+    }
+
+    .header-nav.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .header-nav-link {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Sticky header scroll effect
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header?.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const nav = document.getElementById('nav');
+
+  menuBtn?.addEventListener('click', () => {
+    menuBtn.classList.toggle('open');
+    nav?.classList.toggle('open');
+  });
+
+  // Close menu on link click
+  nav?.querySelectorAll('.header-nav-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuBtn?.classList.remove('open');
+      nav?.classList.remove('open');
+    });
+  });
+</script>

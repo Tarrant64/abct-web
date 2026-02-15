@@ -1,0 +1,178 @@
+---
+const stats = [
+  { value: '11', label: 'Blockchains' },
+  { value: '7', label: 'Exchanges' },
+  { value: '5', label: 'Themes' },
+];
+---
+
+<section class="hero bg-gradient">
+  <div class="container hero-container">
+    <div class="hero-badge">Open Source & Self-Hosted</div>
+    <h1 class="hero-title">
+      A Better<br />
+      <span class="hero-title-accent">Crypto Tracker</span>
+    </h1>
+    <p class="hero-subtitle">
+      Personal multi-chain portfolio tracker. Cardano-first. Self-hosted. Privacy-focused.
+    </p>
+    <div class="hero-actions">
+      <a
+        href="https://github.com/Tarrant64/abct"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
+      <a
+        href="https://github.com/Tarrant64/abct#quick-start"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary"
+      >
+        Get Started
+      </a>
+    </div>
+    <div class="hero-stats">
+      {stats.map((stat) => (
+        <div class="hero-stat">
+          <span class="hero-stat-value">{stat.value}</span>
+          <span class="hero-stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 160px 0 100px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 8px 18px;
+    background: rgba(0, 210, 106, 0.1);
+    border: 1px solid rgba(0, 210, 106, 0.25);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 32px;
+  }
+
+  .hero-title {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  .hero-title-accent {
+    background: linear-gradient(135deg, var(--accent) 0%, #00f5a0 50%, #00d9f5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 60px;
+    padding: 32px 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .hero-stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: var(--font-mono);
+  }
+
+  .hero-stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 120px 0 60px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .hero-actions .btn {
+      justify-content: center;
+    }
+
+    .hero-stats {
+      gap: 32px;
+      padding: 24px 32px;
+    }
+
+    .hero-stat-value {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2.2rem;
+    }
+
+    .hero-stats {
+      gap: 20px;
+      padding: 20px 24px;
+    }
+  }
+</style>

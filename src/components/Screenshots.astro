@@ -1,0 +1,112 @@
+---
+const screenshots = [
+  {
+    src: '/images/screenshot-1.png',
+    alt: 'ABCT Dashboard — Portfolio card with unified chart',
+    caption: 'Portfolio Overview',
+    description: 'Track your total portfolio value with interactive charts and real-time price data.',
+  },
+  {
+    src: '/images/screenshot-2.png',
+    alt: 'ABCT Dashboard — Allocation donut and blockchain cards',
+    caption: 'Allocation Breakdown',
+    description: 'See your portfolio allocation across blockchains with donut charts and chain-level cards.',
+  },
+  {
+    src: '/images/screenshot-3.png',
+    alt: 'ABCT Dashboard — Full overview with market heatmap',
+    caption: 'Full Dashboard',
+    description: 'Complete dashboard view with market heatmap, portfolio analytics, and chain summaries.',
+  },
+];
+---
+
+<section class="section screenshots" id="screenshots">
+  <div class="container">
+    <h2 class="section-title">See It in Action</h2>
+    <p class="section-subtitle">
+      A clean, data-rich dashboard designed for tracking your entire crypto portfolio.
+    </p>
+    <div class="screenshots-gallery">
+      {screenshots.map((screenshot, i) => (
+        <div class="screenshot-item">
+          <div class="screenshot-image-wrapper">
+            <img
+              src={screenshot.src}
+              alt={screenshot.alt}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          </div>
+          <div class="screenshot-info">
+            <h3 class="screenshot-caption">{screenshot.caption}</h3>
+            <p class="screenshot-description">{screenshot.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .screenshots {
+    background: var(--bg-secondary);
+  }
+
+  .screenshots-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .screenshot-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .screenshot-image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transition: all var(--transition);
+  }
+
+  .screenshot-image-wrapper:hover {
+    border-color: var(--border-accent);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px var(--accent-glow);
+    transform: translateY(-4px);
+  }
+
+  .screenshot-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .screenshot-info {
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .screenshot-caption {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+
+  .screenshot-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .screenshots-gallery {
+      gap: 36px;
+    }
+  }
+</style>

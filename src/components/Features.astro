@@ -1,0 +1,119 @@
+---
+const features = [
+  {
+    icon: '🔷',
+    title: 'Cardano-First',
+    description:
+      'Deep Cardano integration — stake pools, governance actions, native assets, DeFi protocols, and delegation tracking.',
+  },
+  {
+    icon: '⛓️',
+    title: '11 Blockchains',
+    description:
+      'Cardano, Bitcoin, Ethereum, Solana, Polygon, Base, Algorand, Arbitrum, Avalanche, BNB Chain, and Tron.',
+  },
+  {
+    icon: '🔄',
+    title: '7 Exchanges',
+    description:
+      'Coinbase, Binance, OKX, Bitget, Gate.io, KuCoin, and Binance.US — all balances in one view.',
+  },
+  {
+    icon: '🔒',
+    title: 'Self-Hosted & Private',
+    description:
+      'Your data stays on your machine. No telemetry, no cloud sync, no third-party tracking. You own everything.',
+  },
+  {
+    icon: '🐳',
+    title: 'Docker Ready',
+    description:
+      'Single container deployment. Pull, configure, and run — up and tracking in under a minute.',
+  },
+  {
+    icon: '🖼️',
+    title: 'NFT Gallery',
+    description:
+      'Multi-chain NFT wall with floor prices, collection grouping, and detailed metadata views.',
+  },
+  {
+    icon: '📊',
+    title: 'Transaction History',
+    description:
+      'Full transaction analytics across all connected chains with filtering, search, and CSV export.',
+  },
+  {
+    icon: '🎨',
+    title: '5 Themes',
+    description:
+      'Dark Mode, Light, Cypherpunk, Ocean Depths, and Sunset Horizon — pick the look that suits you.',
+  },
+];
+---
+
+<section class="section features" id="features">
+  <div class="container">
+    <h2 class="section-title">Everything You Need</h2>
+    <p class="section-subtitle">
+      A complete self-hosted portfolio tracker built for serious crypto users.
+    </p>
+    <div class="features-grid">
+      {features.map((feature) => (
+        <div class="card feature-card">
+          <span class="feature-icon">{feature.icon}</span>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-description">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 210, 106, 0.08);
+    border-radius: 12px;
+  }
+
+  .feature-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .feature-description {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 1024px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
