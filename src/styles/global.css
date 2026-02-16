@@ -107,7 +107,7 @@ img {
   font-weight: 600;
   font-family: var(--font-sans);
   cursor: pointer;
-  transition: all var(--transition);
+  transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition), border-color var(--transition);
   border: none;
   text-decoration: none;
 }
@@ -142,7 +142,7 @@ img {
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 32px;
-  transition: all var(--transition);
+  transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
   backdrop-filter: blur(10px);
 }
 

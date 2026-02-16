@@ -51,7 +51,7 @@ const navLinks = [
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
-    transition: all var(--transition);
+    transition: padding var(--transition), background var(--transition);
   }
 
   .header.scrolled {
@@ -121,7 +121,7 @@ const navLinks = [
     height: 2px;
     background: var(--text-primary);
     border-radius: 2px;
-    transition: all var(--transition);
+    transition: transform var(--transition), opacity var(--transition);
   }
 
   .header-menu-btn.open span:nth-child(1) {

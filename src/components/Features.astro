@@ -48,8 +48,8 @@
           <img src="/images/chains/near.png" alt="NEAR" width="20" height="20" />
           <img src="/images/chains/icp.png" alt="Internet Computer" width="20" height="20" />
         </div>
-        <h3 class="feature-title">26 Blockchains</h3>
-        <p class="feature-description">Cardano, Bitcoin, Ethereum, Solana, Polygon, Base, Algorand, Arbitrum, Avalanche, BNB Chain, Tron, XRP Ledger, Hedera, MultiversX, Sui, Aptos, Filecoin, Litecoin, Dogecoin, Zcash, Tezos, Stacks, VeChain, Cosmos, NEAR, and Internet Computer.</p>
+        <h3 class="feature-title">Multi-Blockchain</h3>
+        <p class="feature-description">Cardano, Bitcoin, Ethereum, Solana, Polygon, Arbitrum, Avalanche, BNB Chain, Tron, XRP Ledger, Cosmos, NEAR, Litecoin, Dogecoin... and more added regularly.</p>
       </div>
 
       <!-- 7 Exchanges -->
@@ -59,8 +59,8 @@
             <path d="M3 12h4l3-9 4 18 3-9h4"/>
           </svg>
         </span>
-        <h3 class="feature-title">7 Exchanges</h3>
-        <p class="feature-description">Coinbase, Binance, OKX, Bitget, Gate.io, KuCoin, and Binance.US — all balances in one view.</p>
+        <h3 class="feature-title">Exchange Support</h3>
+        <p class="feature-description">Connect your exchange accounts with read-only API keys and see all balances in one unified view.</p>
       </div>
 
       <!-- Self-Hosted & Private -->
@@ -76,10 +76,16 @@
       </div>
 
       <!-- Docker Ready -->
-      <div class="card feature-card">
-        <span class="feature-icon icon-emoji">🐳</span>
+      <div class="card feature-card docker-card">
+        <a href="https://hub.docker.com/r/tarrant64/abct" target="_blank" rel="noopener noreferrer" class="docker-logo-link">
+          <svg class="docker-whale" width="52" height="40" viewBox="0 0 24 18" fill="var(--accent)">
+            <path d="M4.82 8.15h2.56v2.42H4.82V8.15zm3.05 0h2.56v2.42H7.87V8.15zm3.06 0h2.56v2.42h-2.56V8.15zm3.05 0h2.56v2.42h-2.56V8.15zM7.87 5.42h2.56v2.42H7.87V5.42zm3.06 0h2.56v2.42h-2.56V5.42zm3.05 0h2.56v2.42h-2.56V5.42zm-3.05-2.73h2.56v2.42h-2.56V2.69zm3.05 0h2.56v2.42h-2.56V2.69zM23.7 9.29c-.53-.32-1.77-.44-2.72-.28-.12-.95-.6-1.78-1.17-2.45l-.4-.32-.32.4c-.65.8-.83 2.12-.73 3.13.07.64.28 1.29.65 1.8-.3.17-.65.32-1.01.44A7.9 7.9 0 0116.12 12H.68l-.04.2a8.56 8.56 0 00.73 4.39l.24.4v.04c1.65 2.77 4.57 3.97 7.81 3.97 5.95 0 10.58-2.73 12.75-8.6 1.45.08 2.89-.36 3.56-1.77l.17-.36-.4-.24z"/>
+          </svg>
+          <span class="docker-plus">+</span>
+          <img src="/images/abct-logo3.png" alt="ABCT" width="40" height="40" class="docker-abct-logo" />
+        </a>
         <h3 class="feature-title">Docker Ready</h3>
-        <p class="feature-description">Single container deployment. Pull, configure, and run — up and tracking in under a minute.</p>
+        <p class="feature-description">Single container deployment. Pull, configure, and run — <a href="https://hub.docker.com/r/tarrant64/abct" target="_blank" rel="noopener noreferrer">available on Docker Hub</a>.</p>
       </div>
 
       <!-- NFT Gallery -->
@@ -101,11 +107,16 @@
         <p class="feature-description">Full transaction analytics across all connected chains with filtering, search, and CSV export.</p>
       </div>
 
-      <!-- 5 Themes -->
+      <!-- Analytics -->
       <div class="card feature-card">
-        <span class="feature-icon icon-emoji">🎨</span>
-        <h3 class="feature-title">5 Themes</h3>
-        <p class="feature-description">Dark Mode, Light, Cypherpunk, Ocean Depths, and Sunset Horizon — pick the look that suits you.</p>
+        <span class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 21H3V3"/>
+            <path d="M18 9l-5 5-2-2-4 4"/>
+          </svg>
+        </span>
+        <h3 class="feature-title">Portfolio Analytics</h3>
+        <p class="feature-description">Real-time portfolio valuation, historical charts, asset allocation breakdowns, and performance tracking across all chains.</p>
       </div>
 
     </div>
@@ -154,6 +165,37 @@
   .chain-logos img {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);
+  }
+
+  .docker-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .docker-logo-link:hover {
+    opacity: 0.8;
+  }
+
+  .docker-plus {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--text-muted);
+  }
+
+  .docker-abct-logo {
+    border-radius: 8px;
+  }
+
+  .docker-card a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .docker-card a:hover {
+    text-decoration: underline;
   }
 
   .feature-title {

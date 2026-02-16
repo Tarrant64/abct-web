@@ -180,7 +180,7 @@ const screenshots = [
     backdrop-filter: blur(12px);
     color: var(--text-secondary);
     cursor: pointer;
-    transition: all var(--transition);
+    transition: border-color var(--transition), color var(--transition), background var(--transition);
   }
 
   .slider-arrow:hover {
@@ -209,7 +209,7 @@ const screenshots = [
     background: var(--text-muted);
     opacity: 0.35;
     cursor: pointer;
-    transition: all var(--transition);
+    transition: background var(--transition), opacity var(--transition), transform var(--transition);
   }
 
   .dot.active {
