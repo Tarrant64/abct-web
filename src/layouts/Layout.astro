@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title = 'A Better Crypto Tracker — Self-Hosted Multi-Chain Portfolio Tracker',
-  description = 'Personal multi-chain portfolio tracker. Cardano-first. Self-hosted. Privacy-focused. Track 17 blockchains and 7 exchanges from a single dashboard.',
+  description = 'Personal multi-chain portfolio tracker. Cardano-first. Self-hosted. Privacy-focused. Track 26 blockchains and 7 exchanges from a single dashboard.',
 } = Astro.props;
 
 const siteUrl = 'https://abettercryptotracker.com';
@@ -42,9 +42,11 @@ const ogImage = `${siteUrl}/images/portfolio-overview.png`;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <link rel="canonical" href="https://abettercryptotracker.com/" />
 
     <title>{title}</title>
   </head>
