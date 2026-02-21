@@ -1,50 +1,40 @@
 ---
-const screenshots = [
-  {
-    src: '/images/portfolio-overview.png',
-    alt: 'Portfolio overview with total value, donut chart, and history graph',
-    caption: 'Portfolio Overview',
-  },
-  {
-    src: '/images/manage-wallets.png',
-    alt: 'Manage wallets view with multi-chain wallet list and token counts',
-    caption: 'Manage Wallets',
-  },
-  {
-    src: '/images/defi-positions.png',
-    alt: 'DeFi staked positions and stablecoins across multiple protocols',
-    caption: 'DeFi Positions',
-  },
-  {
-    src: '/images/cardano-asset-breakdown.png',
-    alt: 'Cardano asset breakdown modal with allocation donut chart',
-    caption: 'Asset Breakdown',
-  },
-  {
-    src: '/images/analytics-allocation.png',
-    alt: 'Data and analytics with allocation donuts and price chart',
-    caption: 'Analytics & Allocation',
-  },
-  {
-    src: '/images/portfolio-heatmap.png',
-    alt: 'Portfolio heatmap showing asset sizes and performance',
-    caption: 'Portfolio Heatmap',
-  },
-  {
-    src: '/images/transaction-history.png',
-    alt: 'Transaction history with filters across all chains',
-    caption: 'Transaction History',
-  },
-  {
-    src: '/images/manage-apis.png',
-    alt: 'API management dashboard with utilization and configuration',
-    caption: 'API Management',
-  },
-  {
-    src: '/images/backend-services.png',
-    alt: 'Backend services status showing FastAPI, database, and external APIs',
-    caption: 'Backend Services',
-  },
+const dashboardSlides = [
+  { src: '/images/portfolio-overview.png', alt: 'Portfolio overview with total value, donut chart, and history graph', caption: 'Portfolio Overview' },
+  { src: '/images/all-assets-overview.png', alt: 'All assets overview with prices, holdings, and 24h changes', caption: 'All Assets Overview' },
+  { src: '/images/manage-wallets.png', alt: 'Manage wallets view with multi-chain wallet list and token counts', caption: 'Manage Wallets' },
+  { src: '/images/defi-positions.png', alt: 'DeFi staked positions and stablecoins across multiple protocols', caption: 'DeFi Positions' },
+  { src: '/images/cardano-asset-breakdown.png', alt: 'Cardano asset breakdown modal with allocation donut chart', caption: 'Asset Breakdown' },
+  { src: '/images/analytics-allocation.png', alt: 'Data and analytics with allocation donuts and price chart', caption: 'Analytics & Allocation' },
+  { src: '/images/wallet-intelligence.png', alt: 'Wallet intelligence with on-chain activity scoring and insights', caption: 'Wallet Intelligence' },
+  { src: '/images/portfolio-vs-btc.png', alt: 'Portfolio performance benchmarked against Bitcoin over time', caption: 'Portfolio vs BTC' },
+  { src: '/images/relative-strength.png', alt: 'Relative strength comparison across portfolio assets', caption: 'Relative Strength' },
+  { src: '/images/crypto-market.png', alt: 'Crypto market overview with top movers and global stats', caption: 'Crypto Market' },
+  { src: '/images/chains-by-tvl.png', alt: 'Blockchain rankings sorted by total value locked', caption: 'Chains by TVL' },
+  { src: '/images/portfolio-heatmap.png', alt: 'Portfolio heatmap showing asset sizes and performance', caption: 'Portfolio Heatmap' },
+  { src: '/images/transaction-history.png', alt: 'Transaction history with filters across all chains', caption: 'Transaction History' },
+  { src: '/images/manage-apis.png', alt: 'API management dashboard with utilization and configuration', caption: 'API Management' },
+  { src: '/images/backend-services.png', alt: 'Backend services status showing FastAPI, database, and external APIs', caption: 'Backend Services' },
+];
+
+const mobileSlides = [
+  { src: '/images/mobile-portfolio.jpeg', alt: 'iOS app portfolio overview with total value and asset list', caption: 'Portfolio' },
+  { src: '/images/mobile-holdings.jpeg', alt: 'iOS app all holdings view with prices and allocations', caption: 'All Holdings' },
+  { src: '/images/mobile-wallets.jpeg', alt: 'iOS app wallet management with multi-chain wallets', caption: 'Wallets' },
+  { src: '/images/mobile-nfts.jpeg', alt: 'iOS app NFT gallery with collection grid', caption: 'NFT Gallery' },
+  { src: '/images/mobile-eth-detail.jpeg', alt: 'iOS app Ethereum detail view with price chart', caption: 'ETH Detail' },
+];
+
+const watchSlides = [
+  { src: '/images/watch-portfolio.png', alt: 'watchOS app portfolio overview with total value', caption: 'Portfolio' },
+  { src: '/images/watch-assets.png', alt: 'watchOS app top assets list with prices', caption: 'Assets' },
+  { src: '/images/watch-btc-detail.png', alt: 'watchOS app Bitcoin detail with price chart', caption: 'BTC Detail' },
+];
+
+const tabs = [
+  { id: 'dashboard', label: 'Dashboard', slides: dashboardSlides },
+  { id: 'mobile', label: 'Mobile', slides: mobileSlides },
+  { id: 'watchos', label: 'watchOS', slides: watchSlides },
 ];
 ---
 
@@ -52,54 +42,112 @@ const screenshots = [
   <div class="container">
     <h2 class="section-title">See It in Action</h2>
     <p class="section-subtitle">
-      A clean, data-rich dashboard designed for tracking your entire crypto portfolio.
+      Track your portfolio across dashboard, mobile, and watch — all powered by your self-hosted ABCT instance.
     </p>
-  </div>
 
-  <div class="slider">
-    <button class="slider-arrow slider-arrow--prev" id="slider-prev" aria-label="Previous screenshot">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
-
-    <div class="slider-viewport" id="slider-viewport">
-      {screenshots.map((screenshot, i) => (
-        <div class="slide">
-          <div class="slide-img">
-            <img
-              src={screenshot.src}
-              alt={screenshot.alt}
-              loading={i < 2 ? 'eager' : 'lazy'}
-              decoding="async"
-            />
-          </div>
-          <p class="slide-caption">{screenshot.caption}</p>
-        </div>
+    <div class="tabs">
+      {tabs.map((tab, i) => (
+        <button
+          class:list={['tab-btn', { active: i === 0 }]}
+          data-tab={tab.id}
+        >
+          {tab.label}
+        </button>
       ))}
     </div>
-
-    <button class="slider-arrow slider-arrow--next" id="slider-next" aria-label="Next screenshot">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </button>
   </div>
 
-  <div class="slider-dots" id="slider-dots">
-    {screenshots.map((s, i) => (
-      <button
-        class:list={['dot', { active: i === 0 }]}
-        data-index={i}
-        aria-label={`View ${s.caption}`}
-      />
-    ))}
-  </div>
+  {tabs.map((tab, i) => (
+    <div
+      class:list={['tab-panel', { active: i === 0 }]}
+      data-panel={tab.id}
+    >
+      <div class="slider">
+        <button class="slider-arrow slider-arrow--prev" data-arrow="prev" aria-label="Previous screenshot">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="slider-viewport" data-viewport>
+          {tab.slides.map((slide, j) => (
+            <div class:list={['slide', `slide--${tab.id}`]}>
+              <div class:list={['slide-img', `slide-img--${tab.id}`]}>
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  loading={i === 0 && j < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </div>
+              <p class="slide-caption">{slide.caption}</p>
+            </div>
+          ))}
+        </div>
+
+        <button class="slider-arrow slider-arrow--next" data-arrow="next" aria-label="Next screenshot">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="slider-dots" data-dots>
+        {tab.slides.map((s, j) => (
+          <button
+            class:list={['dot', { active: j === 0 }]}
+            data-index={j}
+            aria-label={`View ${s.caption}`}
+          />
+        ))}
+      </div>
+    </div>
+  ))}
 </section>
 
 <style>
   .screenshots {
     background: var(--bg-secondary);
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .tab-btn {
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .tab-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .tab-btn.active {
+    background: rgba(0, 210, 106, 0.12);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Tab panels */
+  .tab-panel {
+    display: none;
+  }
+
+  .tab-panel.active {
+    display: block;
   }
 
   /* Slider shell */
@@ -128,13 +176,24 @@ const screenshots = [
     display: none;
   }
 
-  /* Each slide */
+  /* Slide variants */
   .slide {
-    flex: 0 0 min(600px, 80vw);
     scroll-snap-align: center;
     display: flex;
     flex-direction: column;
     gap: 14px;
+  }
+
+  .slide--dashboard {
+    flex: 0 0 min(600px, 80vw);
+  }
+
+  .slide--mobile {
+    flex: 0 0 min(280px, 60vw);
+  }
+
+  .slide--watchos {
+    flex: 0 0 min(220px, 45vw);
   }
 
   .slide-img {
@@ -148,6 +207,14 @@ const screenshots = [
   .slide-img:hover {
     border-color: var(--border-accent);
     box-shadow: 0 16px 50px rgba(0, 0, 0, 0.45), 0 0 24px var(--accent-glow);
+  }
+
+  .slide-img--mobile {
+    border-radius: 24px;
+  }
+
+  .slide-img--watchos {
+    border-radius: 50px;
   }
 
   .slide-img img {
@@ -232,8 +299,16 @@ const screenshots = [
       gap: 20px;
     }
 
-    .slide {
+    .slide--dashboard {
       flex: 0 0 85vw;
+    }
+
+    .slide--mobile {
+      flex: 0 0 70vw;
+    }
+
+    .slide--watchos {
+      flex: 0 0 55vw;
     }
 
     .slider-arrow {
@@ -243,16 +318,27 @@ const screenshots = [
     .slider-dots {
       margin-top: 20px;
     }
+
+    .tabs {
+      gap: 6px;
+    }
+
+    .tab-btn {
+      padding: 8px 18px;
+      font-size: 0.88rem;
+    }
   }
 </style>
 
 <script>
-  const viewport = document.getElementById('slider-viewport') as HTMLElement;
-  const dots = document.querySelectorAll<HTMLButtonElement>('.dot');
-  const prevBtn = document.getElementById('slider-prev');
-  const nextBtn = document.getElementById('slider-next');
+  function initPanel(panel: HTMLElement) {
+    const viewport = panel.querySelector('[data-viewport]') as HTMLElement;
+    const dots = panel.querySelectorAll<HTMLButtonElement>('.dot');
+    const prevBtn = panel.querySelector('[data-arrow="prev"]');
+    const nextBtn = panel.querySelector('[data-arrow="next"]');
 
-  if (viewport) {
+    if (!viewport) return;
+
     const slides = viewport.querySelectorAll<HTMLElement>('.slide');
 
     function scrollToSlide(index: number) {
@@ -275,14 +361,12 @@ const screenshots = [
       dots.forEach((d, i) => d.classList.toggle('active', i === closest));
     }
 
-    // Scroll listener for dot sync
     let scrollTimeout: ReturnType<typeof setTimeout>;
     viewport.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(updateDots, 60);
     }, { passive: true });
 
-    // Arrow buttons
     prevBtn?.addEventListener('click', () => {
       const active = [...dots].findIndex(d => d.classList.contains('active'));
       if (active > 0) scrollToSlide(active - 1);
@@ -293,7 +377,6 @@ const screenshots = [
       if (active < slides.length - 1) scrollToSlide(active + 1);
     });
 
-    // Dot clicks
     dots.forEach(dot => {
       dot.addEventListener('click', () => {
         const idx = parseInt(dot.dataset.index || '0');
@@ -301,4 +384,34 @@ const screenshots = [
       });
     });
   }
+
+  // Tab switching
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>('.tab-btn');
+  const panels = document.querySelectorAll<HTMLElement>('.tab-panel');
+  const initialized = new Set<string>();
+
+  // Init first panel immediately
+  const firstPanel = document.querySelector<HTMLElement>('.tab-panel.active');
+  if (firstPanel) {
+    initPanel(firstPanel);
+    initialized.add(firstPanel.dataset.panel || '');
+  }
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabId = btn.dataset.tab || '';
+
+      tabBtns.forEach(b => b.classList.toggle('active', b === btn));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === tabId));
+
+      // Lazy-init carousel on first view
+      if (!initialized.has(tabId)) {
+        const panel = document.querySelector<HTMLElement>(`[data-panel="${tabId}"]`);
+        if (panel) {
+          initPanel(panel);
+          initialized.add(tabId);
+        }
+      }
+    });
+  });
 </script>
