@@ -4,18 +4,39 @@ const chains = [
   { name: 'Bitcoin', logo: '/images/chains/bitcoin.png', url: 'https://bitcoin.org' },
   { name: 'Ethereum', logo: '/images/chains/ethereum.png', url: 'https://ethereum.org' },
   { name: 'Solana', logo: '/images/chains/solana.png', url: 'https://solana.com' },
+  { name: 'TON', logo: '/images/chains/ton.png', url: 'https://ton.org' },
+  { name: 'Polkadot', logo: '/images/chains/polkadot.png', url: 'https://polkadot.com' },
   { name: 'Polygon', logo: '/images/chains/polygon.png', url: 'https://polygon.technology' },
   { name: 'Base', logo: '/images/chains/base.png', url: 'https://base.org' },
-  { name: 'Algorand', logo: '/images/chains/algorand.png', url: 'https://algorand.co' },
   { name: 'Arbitrum', logo: '/images/chains/arbitrum.png', url: 'https://arbitrum.io' },
   { name: 'Avalanche', logo: '/images/chains/avalanche.png', url: 'https://avax.network' },
   { name: 'BNB Chain', logo: '/images/chains/bnb.png', url: 'https://bnbchain.org' },
+  { name: 'Cosmos', logo: '/images/chains/cosmos.png', url: 'https://cosmos.network' },
+  { name: 'Optimism', logo: '/images/chains/optimism.png', url: 'https://optimism.io' },
   { name: 'Tron', logo: '/images/chains/tron.png', url: 'https://tron.network' },
   { name: 'XRP Ledger', logo: '/images/chains/xrp.png', url: 'https://xrpl.org' },
+  { name: 'Stellar', logo: '/images/chains/stellar.png', url: 'https://stellar.org' },
+  { name: 'Algorand', logo: '/images/chains/algorand.png', url: 'https://algorand.co' },
   { name: 'Hedera', logo: '/images/chains/hedera.png', url: 'https://hedera.com' },
-  { name: 'MultiversX', logo: '/images/chains/multiversx.png', url: 'https://multiversx.com' },
   { name: 'Sui', logo: '/images/chains/sui.png', url: 'https://sui.io' },
   { name: 'Aptos', logo: '/images/chains/aptos.png', url: 'https://aptosfoundation.org' },
+  { name: 'MultiversX', logo: '/images/chains/multiversx.png', url: 'https://multiversx.com' },
+  { name: 'Kusama', logo: '/images/chains/kusama.png', url: 'https://kusama.network' },
+  { name: 'Osmosis', logo: '/images/chains/osmosis.png', url: 'https://osmosis.zone' },
+  { name: 'Celestia', logo: '/images/chains/celestia.png', url: 'https://celestia.org' },
+  { name: 'Injective', logo: '/images/chains/injective.png', url: 'https://injective.com' },
+  { name: 'dYdX', logo: '/images/chains/dydx.png', url: 'https://dydx.exchange' },
+  { name: 'Sei', logo: '/images/chains/sei.png', url: 'https://sei.io' },
+  { name: 'Akash', logo: '/images/chains/akash.png', url: 'https://akash.network' },
+  { name: 'Kaspa', logo: '/images/chains/kaspa.png', url: 'https://kaspa.org' },
+  { name: 'Kaia', logo: '/images/chains/kaia.png', url: 'https://kaia.io' },
+  { name: 'Fantom', logo: '/images/chains/fantom.png', url: 'https://fantom.foundation' },
+  { name: 'Cronos', logo: '/images/chains/cronos.png', url: 'https://cronos.org' },
+  { name: 'Gnosis', logo: '/images/chains/gnosis.png', url: 'https://gnosis.io' },
+  { name: 'Moonbeam', logo: '/images/chains/moonbeam.png', url: 'https://moonbeam.network' },
+  { name: 'zkSync Era', logo: '/images/chains/zksync.png', url: 'https://zksync.io' },
+  { name: 'Linea', logo: '/images/chains/linea.png', url: 'https://linea.build' },
+  { name: 'Scroll', logo: '/images/chains/scroll.png', url: 'https://scroll.io' },
   { name: 'Filecoin', logo: '/images/chains/filecoin.png', url: 'https://filecoin.io' },
   { name: 'Litecoin', logo: '/images/chains/litecoin.png', url: 'https://litecoin.org' },
   { name: 'Dogecoin', logo: '/images/chains/dogecoin.png', url: 'https://dogecoin.com' },
@@ -23,15 +44,19 @@ const chains = [
   { name: 'Tezos', logo: '/images/chains/tezos.png', url: 'https://tezos.com' },
   { name: 'Stacks', logo: '/images/chains/stacks.png', url: 'https://stacks.co' },
   { name: 'VeChain', logo: '/images/chains/vechain.png', url: 'https://vechain.org' },
-  { name: 'Cosmos', logo: '/images/chains/cosmos.png', url: 'https://cosmos.network' },
   { name: 'NEAR', logo: '/images/chains/near.png', url: 'https://near.org' },
   { name: 'Internet Computer', logo: '/images/chains/icp.png', url: 'https://internetcomputer.org' },
+  { name: 'Ergo', logo: '/images/chains/ergo.png', url: 'https://ergoplatform.org' },
+  { name: 'IOTA', logo: '/images/chains/iota.png', url: 'https://iota.org' },
+  { name: 'Waves', logo: '/images/chains/waves.png', url: 'https://waves.tech' },
+  { name: 'Mina', logo: '/images/chains/mina.png', url: 'https://minaprotocol.com' },
+  { name: 'Zilliqa', logo: '/images/chains/zilliqa.png', url: 'https://zilliqa.com' },
 ];
 ---
 
 <section class="chains">
   <div class="container">
-    <p class="chains-label">Supported Blockchains</p>
+    <p class="chains-label">50+ Supported Blockchains</p>
     <div class="chains-grid">
       {chains.map((chain) => (
         <a href={chain.url} class="chain" target="_blank" rel="noopener noreferrer">
@@ -39,6 +64,9 @@ const chains = [
           <span class="chain-name">{chain.name}</span>
         </a>
       ))}
+    </div>
+    <div class="chains-cta">
+      <a href="/supported/" class="chains-link">View full list with DeFi protocols &rarr;</a>
     </div>
   </div>
 </section>
@@ -92,6 +120,22 @@ const chains = [
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--text-secondary);
+  }
+
+  .chains-cta {
+    text-align: center;
+    margin-top: 32px;
+  }
+
+  .chains-link {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+    transition: color var(--transition);
+  }
+
+  .chains-link:hover {
+    color: var(--accent-hover);
   }
 
   @media (max-width: 560px) {

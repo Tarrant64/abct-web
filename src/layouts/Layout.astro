@@ -6,7 +6,7 @@ interface Props {
 
 const {
   title = 'A Better Crypto Tracker — Self-Hosted Multi-Chain Portfolio Tracker',
-  description = 'Multi-chain portfolio tracker with iOS and watchOS apps. Cardano-first. Self-hosted. Privacy-focused. Track 26 blockchains and 7 exchanges from dashboard, phone, and watch.',
+  description = 'Multi-chain portfolio tracker with iOS and watchOS apps. Cardano-first. Self-hosted. Privacy-focused. Track 50+ blockchains, 80+ DeFi protocols, and 10+ exchanges from dashboard, phone, and watch.',
 } = Astro.props;
 
 const siteUrl = 'https://abettercryptotracker.com';
@@ -46,7 +46,7 @@ const ogImage = `${siteUrl}/images/portfolio-overview.png`;
       rel="stylesheet"
     />
 
-    <link rel="canonical" href="https://abettercryptotracker.com/" />
+    <link rel="canonical" href={`https://abettercryptotracker.com${Astro.url.pathname}`} />
 
     <title>{title}</title>
   </head>

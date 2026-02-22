@@ -1,0 +1,693 @@
+---
+// Chain data organized by category
+const cardanoEcosystem = [
+  { name: 'Cardano', token: 'ADA', logo: '/images/chains/cardano.png', url: 'https://cardano.org', badge: 'Deepest Integration' },
+];
+
+const evmChains = [
+  { name: 'Ethereum', token: 'ETH', logo: '/images/chains/ethereum.png', url: 'https://ethereum.org' },
+  { name: 'Polygon', token: 'POL', logo: '/images/chains/polygon.png', url: 'https://polygon.technology' },
+  { name: 'Base', token: 'ETH', logo: '/images/chains/base.png', url: 'https://base.org' },
+  { name: 'Arbitrum', token: 'ETH', logo: '/images/chains/arbitrum.png', url: 'https://arbitrum.io' },
+  { name: 'Avalanche', token: 'AVAX', logo: '/images/chains/avalanche.png', url: 'https://avax.network' },
+  { name: 'BNB Chain', token: 'BNB', logo: '/images/chains/bnb.png', url: 'https://bnbchain.org' },
+  { name: 'Optimism', token: 'ETH', logo: '/images/chains/optimism.png', url: 'https://optimism.io' },
+  { name: 'zkSync Era', token: 'ETH', logo: '/images/chains/zksync.png', url: 'https://zksync.io' },
+  { name: 'Linea', token: 'ETH', logo: '/images/chains/linea.png', url: 'https://linea.build' },
+  { name: 'Scroll', token: 'ETH', logo: '/images/chains/scroll.png', url: 'https://scroll.io' },
+  { name: 'Fantom', token: 'FTM', logo: '/images/chains/fantom.png', url: 'https://fantom.foundation' },
+  { name: 'Cronos', token: 'CRO', logo: '/images/chains/cronos.png', url: 'https://cronos.org' },
+  { name: 'Gnosis', token: 'xDAI', logo: '/images/chains/gnosis.png', url: 'https://gnosis.io' },
+  { name: 'Moonbeam', token: 'GLMR', logo: '/images/chains/moonbeam.png', url: 'https://moonbeam.network' },
+  { name: 'Kaia', token: 'KAIA', logo: '/images/chains/kaia.png', url: 'https://kaia.io' },
+];
+
+const cosmosIbc = [
+  { name: 'Cosmos Hub', token: 'ATOM', logo: '/images/chains/cosmos.png', url: 'https://cosmos.network' },
+  { name: 'Osmosis', token: 'OSMO', logo: '/images/chains/osmosis.png', url: 'https://osmosis.zone' },
+  { name: 'Celestia', token: 'TIA', logo: '/images/chains/celestia.png', url: 'https://celestia.org' },
+  { name: 'Injective', token: 'INJ', logo: '/images/chains/injective.png', url: 'https://injective.com' },
+  { name: 'dYdX', token: 'DYDX', logo: '/images/chains/dydx.png', url: 'https://dydx.exchange' },
+  { name: 'Sei', token: 'SEI', logo: '/images/chains/sei.png', url: 'https://sei.io' },
+  { name: 'Akash', token: 'AKT', logo: '/images/chains/akash.png', url: 'https://akash.network' },
+];
+
+const majorL1s = [
+  { name: 'Bitcoin', token: 'BTC', logo: '/images/chains/bitcoin.png', url: 'https://bitcoin.org' },
+  { name: 'Solana', token: 'SOL', logo: '/images/chains/solana.png', url: 'https://solana.com' },
+  { name: 'TON', token: 'TON', logo: '/images/chains/ton.png', url: 'https://ton.org' },
+  { name: 'Polkadot', token: 'DOT', logo: '/images/chains/polkadot.png', url: 'https://polkadot.com' },
+  { name: 'Kusama', token: 'KSM', logo: '/images/chains/kusama.png', url: 'https://kusama.network' },
+  { name: 'Stellar', token: 'XLM', logo: '/images/chains/stellar.png', url: 'https://stellar.org' },
+  { name: 'Kaspa', token: 'KAS', logo: '/images/chains/kaspa.png', url: 'https://kaspa.org' },
+  { name: 'XRP Ledger', token: 'XRP', logo: '/images/chains/xrp.png', url: 'https://xrpl.org' },
+  { name: 'Tron', token: 'TRX', logo: '/images/chains/tron.png', url: 'https://tron.network' },
+  { name: 'Algorand', token: 'ALGO', logo: '/images/chains/algorand.png', url: 'https://algorand.co' },
+  { name: 'Hedera', token: 'HBAR', logo: '/images/chains/hedera.png', url: 'https://hedera.com' },
+  { name: 'MultiversX', token: 'EGLD', logo: '/images/chains/multiversx.png', url: 'https://multiversx.com' },
+];
+
+const smartContract = [
+  { name: 'Sui', token: 'SUI', logo: '/images/chains/sui.png', url: 'https://sui.io' },
+  { name: 'Aptos', token: 'APT', logo: '/images/chains/aptos.png', url: 'https://aptosfoundation.org' },
+  { name: 'IOTA', token: 'IOTA', logo: '/images/chains/iota.png', url: 'https://iota.org' },
+  { name: 'Tezos', token: 'XTZ', logo: '/images/chains/tezos.png', url: 'https://tezos.com' },
+  { name: 'Stacks', token: 'STX', logo: '/images/chains/stacks.png', url: 'https://stacks.co' },
+  { name: 'Mina', token: 'MINA', logo: '/images/chains/mina.png', url: 'https://minaprotocol.com' },
+  { name: 'Zilliqa', token: 'ZIL', logo: '/images/chains/zilliqa.png', url: 'https://zilliqa.com' },
+  { name: 'Internet Computer', token: 'ICP', logo: '/images/chains/icp.png', url: 'https://internetcomputer.org' },
+];
+
+const specialtyChains = [
+  { name: 'Litecoin', token: 'LTC', logo: '/images/chains/litecoin.png', url: 'https://litecoin.org' },
+  { name: 'Dogecoin', token: 'DOGE', logo: '/images/chains/dogecoin.png', url: 'https://dogecoin.com' },
+  { name: 'Zcash', token: 'ZEC', logo: '/images/chains/zcash.png', url: 'https://z.cash' },
+  { name: 'VeChain', token: 'VET', logo: '/images/chains/vechain.png', url: 'https://vechain.org' },
+  { name: 'NEAR', token: 'NEAR', logo: '/images/chains/near.png', url: 'https://near.org' },
+  { name: 'Filecoin', token: 'FIL', logo: '/images/chains/filecoin.png', url: 'https://filecoin.io' },
+  { name: 'Ergo', token: 'ERG', logo: '/images/chains/ergo.png', url: 'https://ergoplatform.org' },
+  { name: 'Waves', token: 'WAVES', logo: '/images/chains/waves.png', url: 'https://waves.tech' },
+];
+
+// DeFi protocol data
+const cardanoDefi = [
+  { name: 'Liqwid', type: 'Lending & Borrowing' },
+  { name: 'Indigo', type: 'Synthetic Assets' },
+  { name: 'Strike', type: 'Yield Optimizer' },
+  { name: 'Iagon', type: 'Decentralized Storage' },
+  { name: 'Surf', type: 'Yield Aggregator' },
+  { name: 'Minswap', type: 'DEX' },
+  { name: 'SundaeSwap', type: 'DEX' },
+  { name: 'WingRiders', type: 'DEX' },
+  { name: 'Splash', type: 'DEX' },
+  { name: 'Djed', type: 'Stablecoin' },
+  { name: 'FluidTokens', type: 'NFT Lending' },
+  { name: 'Lenfi', type: 'Lending' },
+  { name: 'MuesliSwap', type: 'DEX' },
+];
+
+const evmDefiContract = [
+  'Aave v3', 'Compound v3', 'Spark', 'MakerDAO', 'Morpho', 'Curve', 'Balancer', 'GMX',
+  'EigenLayer', 'Uniswap v3 LP', 'Pendle', 'Aerodrome', 'Velodrome', 'Stargate',
+  'Radiant', 'Benqi', 'SushiSwap', 'Synthetix', 'Liquity', 'Camelot', 'Abracadabra',
+  'PancakeSwap v3',
+];
+
+const evmDefiToken = [
+  'Lido', 'Rocket Pool', 'Frax', 'Coinbase Staked ETH', 'Mantle', 'EtherFi',
+  'StakeWise', 'Swell', 'Kelp', 'Stader', 'Ankr', 'Origin', 'Binance Staked ETH',
+  'Convex', 'Puffer', 'Renzo', 'Ethena', 'MountainProtocol', 'Yearn v3', 'Beefy',
+  'dYdX', 'Alchemix', 'Fluid', 'Stake DAO',
+];
+
+const solanaDefi = [
+  'Marinade', 'Jito', 'Jupiter', 'Raydium', 'Orca', 'Tensor', 'Drift',
+  'Sanctum', 'Lulo', 'marginfi', 'Kamino', 'Solend', 'Meteora', 'Phoenix', 'Lifinity',
+];
+
+const exchanges = [
+  { name: 'Coinbase' },
+  { name: 'Binance' },
+  { name: 'Binance.US' },
+  { name: 'Kraken' },
+  { name: 'OKX' },
+  { name: 'Bybit' },
+  { name: 'Bitget' },
+  { name: 'Gate.io' },
+  { name: 'KuCoin' },
+  { name: 'Gemini' },
+  { name: 'Crypto.com' },
+  { name: 'Bitstamp' },
+  { name: 'MEXC' },
+  { name: 'HTX' },
+  { name: 'Bitfinex' },
+  { name: 'Upbit' },
+  { name: 'BingX' },
+  { name: 'Poloniex' },
+  { name: 'LBank' },
+  { name: 'BitMart' },
+  { name: 'WhiteBIT' },
+  { name: 'CoinEx' },
+  { name: 'Bitvavo' },
+  { name: 'Bitrue' },
+  { name: 'XT.com' },
+  { name: 'DigiFinex' },
+  { name: 'CoinW' },
+  { name: 'Pionex' },
+  { name: 'Phemex' },
+  { name: 'WOO X' },
+  { name: 'AscendEX' },
+  { name: 'Deribit' },
+  { name: 'BitFlyer' },
+  { name: 'BTSE' },
+  { name: 'CoinSpot' },
+  { name: 'Swyftx' },
+  { name: 'Bitpanda' },
+  { name: 'Robinhood' },
+  { name: 'HitBTC' },
+  { name: 'Independent Reserve' },
+  { name: 'ProBit' },
+  { name: 'Backpack' },
+];
+
+const chainCategories = [
+  { title: 'Cardano Ecosystem', chains: cardanoEcosystem },
+  { title: 'EVM Chains', chains: evmChains },
+  { title: 'Cosmos IBC', chains: cosmosIbc },
+  { title: 'Major L1s', chains: majorL1s },
+  { title: 'Smart Contract Platforms', chains: smartContract },
+  { title: 'Specialty Chains', chains: specialtyChains },
+];
+---
+
+<section class="supported-hero bg-gradient">
+  <div class="container">
+    <h1 class="supported-title">Supported Crypto</h1>
+    <p class="supported-subtitle">Everything ABCT tracks — blockchains, DeFi protocols, and exchanges.</p>
+    <div class="stats-bar">
+      <div class="stat-card">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Blockchains</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">80+</span>
+        <span class="stat-label">DeFi Protocols</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">10+</span>
+        <span class="stat-label">Exchanges</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Blockchains Section -->
+<section class="section supported-chains" id="blockchains">
+  <div class="container">
+    <h2 class="section-title">Blockchains</h2>
+    <p class="section-subtitle">Organized by ecosystem. Each chain links to its official site.</p>
+
+    {chainCategories.map((category) => (
+      <div class="chain-category">
+        <h3 class="category-title">
+          {category.title}
+        </h3>
+        <div class="category-grid">
+          {category.chains.map((chain) => (
+            <a href={chain.url} class="chain-item" target="_blank" rel="noopener noreferrer">
+              <img src={chain.logo} alt={chain.name} width="40" height="40" loading="lazy" />
+              <div class="chain-info">
+                <span class="chain-item-name">{chain.name}</span>
+                <span class="chain-item-token">{chain.token}</span>
+              </div>
+              {chain.badge && <span class="chain-badge">{chain.badge}</span>}
+            </a>
+          ))}
+        </div>
+        {category.title === 'EVM Chains' && (
+          <p class="category-note">Plus any EVM-compatible chain via generic RPC configuration.</p>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- DeFi Section -->
+<section class="section supported-defi" id="defi">
+  <div class="container">
+    <h2 class="section-title">DeFi Protocols</h2>
+    <p class="section-subtitle">Automatic detection across lending, DEXs, liquid staking, and yield protocols.</p>
+
+    <!-- Cardano DeFi -->
+    <div class="defi-category">
+      <h3 class="category-title">
+        Cardano DeFi
+      </h3>
+      <div class="defi-grid">
+        {cardanoDefi.map((protocol) => (
+          <div class="defi-card">
+            <span class="defi-name">{protocol.name}</span>
+            <span class="defi-type">{protocol.type}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- EVM DeFi -->
+    <div class="defi-category">
+      <h3 class="category-title">
+        EVM DeFi &mdash; Contract-Based
+      </h3>
+      <div class="defi-compact-grid">
+        {evmDefiContract.map((name) => (
+          <span class="defi-tag">{name}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="defi-category">
+      <h3 class="category-title">
+        EVM DeFi &mdash; Token Balance
+      </h3>
+      <div class="defi-compact-grid">
+        {evmDefiToken.map((name) => (
+          <span class="defi-tag">{name}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Solana DeFi -->
+    <div class="defi-category">
+      <h3 class="category-title">
+        Solana DeFi
+      </h3>
+      <div class="defi-compact-grid">
+        {solanaDefi.map((name) => (
+          <span class="defi-tag">{name}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Exchanges Section -->
+<section class="section supported-exchanges" id="exchanges">
+  <div class="container">
+    <h2 class="section-title">Exchanges</h2>
+    <p class="section-subtitle">Connect via read-only API keys. Your credentials never leave your machine.</p>
+
+    <div class="exchange-grid">
+      {exchanges.map((exchange) => (
+        <div class="exchange-card card">
+          <span class="exchange-name">{exchange.name}</span>
+          <span class="exchange-badge">Read-only API</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Generic EVM Callout -->
+<section class="evm-callout">
+  <div class="container">
+    <div class="callout-box">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4M12 8h.01"/>
+      </svg>
+      <div>
+        <strong>Any EVM Chain</strong>
+        <p>ABCT supports any EVM-compatible blockchain via custom RPC configuration. If your chain isn't listed, add it by configuring the RPC URL in your environment variables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="supported-cta bg-gradient">
+  <div class="container cta-container">
+    <h2 class="cta-title">Ready to track your portfolio?</h2>
+    <div class="cta-actions">
+      <a
+        href="https://github.com/Tarrant64/abct"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
+      <a
+        href="https://hub.docker.com/r/tarrant64/abct"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-secondary"
+      >
+        Get It Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Hero Stats */
+  .supported-hero {
+    padding: 140px 0 60px;
+    text-align: center;
+  }
+
+  .supported-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  .supported-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+  }
+
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .stat-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Chain Categories */
+  .chain-category {
+    margin-bottom: 48px;
+  }
+
+  .category-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .category-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(0, 210, 106, 0.1);
+    padding: 2px 10px;
+    border-radius: 100px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .chain-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  }
+
+  .chain-item:hover {
+    background: var(--card-hover);
+    border-color: var(--border-accent);
+    transform: translateY(-2px);
+  }
+
+  .chain-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+  }
+
+  .chain-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .chain-item-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .chain-item-token {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .chain-badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(0, 210, 106, 0.1);
+    border: 1px solid rgba(0, 210, 106, 0.2);
+    padding: 3px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+
+  .category-note {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* DeFi Section */
+  .supported-defi {
+    border-top: 1px solid var(--border);
+  }
+
+  .defi-category {
+    margin-bottom: 48px;
+  }
+
+  .defi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .defi-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: border-color var(--transition);
+  }
+
+  .defi-card:hover {
+    border-color: var(--border-accent);
+  }
+
+  .defi-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .defi-type {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .defi-compact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .defi-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: border-color var(--transition), color var(--transition);
+  }
+
+  .defi-tag:hover {
+    border-color: var(--border-accent);
+    color: var(--text-primary);
+  }
+
+  /* Exchanges */
+  .supported-exchanges {
+    border-top: 1px solid var(--border);
+  }
+
+  .exchange-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .exchange-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .exchange-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+  }
+
+  .exchange-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(0, 210, 106, 0.1);
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  /* EVM Callout */
+  .evm-callout {
+    padding: 40px 0;
+  }
+
+  .callout-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 28px;
+    background: rgba(0, 210, 106, 0.05);
+    border: 1px solid rgba(0, 210, 106, 0.15);
+    border-radius: 12px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .callout-box svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .callout-box strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .callout-box p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* CTA */
+  .supported-cta {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .cta-container {
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .supported-hero {
+      padding: 120px 0 40px;
+    }
+
+    .supported-title {
+      font-size: 2.5rem;
+    }
+
+    .stat-card {
+      padding: 20px 32px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+    }
+
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .exchange-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .supported-title {
+      font-size: 2rem;
+    }
+
+    .stats-bar {
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 16px 24px;
+      flex: 1;
+      min-width: 90px;
+    }
+
+    .stat-number {
+      font-size: 1.6rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+    }
+
+    .exchange-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
