@@ -1,0 +1,309 @@
+---
+---
+
+<section class="section comparison" id="comparison">
+  <div class="container">
+    <h2 class="section-title">ABCT vs. Other Trackers</h2>
+    <p class="section-subtitle">
+      See how a free, open-source tracker compares to the alternatives.
+    </p>
+    <div class="comparison-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th class="feature-col"></th>
+            <th class="abct-col">
+              <div class="col-header abct-header">
+                <img src="/images/abct-logo3.png" alt="ABCT" width="32" height="32" class="col-logo" />
+              </div>
+            </th>
+            <th class="other-col">
+              <div class="col-header">Popular<br/>Tracker</div>
+            </th>
+            <th class="other-col">
+              <div class="col-header">Desktop<br/>Tracker</div>
+            </th>
+            <th class="other-col">
+              <div class="col-header">DeFi<br/>Dashboard</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Pricing -->
+          <tr>
+            <td class="feature-name">Pricing</td>
+            <td class="abct-cell"><span class="badge badge-free">Free Forever</span></td>
+            <td><span class="badge badge-expensive">$14–63/mo</span></td>
+            <td><span class="badge badge-paid">Free (limited) / €25/mo</span></td>
+            <td><span class="badge badge-free">Free</span></td>
+          </tr>
+          <!-- Open Source -->
+          <tr>
+            <td class="feature-name">Open Source</td>
+            <td class="abct-cell"><span class="val val-yes">&#10003;</span> Full</td>
+            <td><span class="val val-no">&#10005;</span> Closed</td>
+            <td><span class="val val-yes">&#10003;</span> AGPLv3</td>
+            <td><span class="val val-no">&#10005;</span> Closed</td>
+          </tr>
+          <!-- Blockchains -->
+          <tr>
+            <td class="feature-name">Blockchains</td>
+            <td class="abct-cell"><span class="val val-yes">50+</span></td>
+            <td><span class="val val-yes">130+</span> <span class="val-note">most balance-only</span></td>
+            <td><span class="val val-limited">~15</span></td>
+            <td><span class="val val-yes">100+</span></td>
+          </tr>
+          <!-- Cardano -->
+          <tr>
+            <td class="feature-name">Cardano Support</td>
+            <td class="abct-cell"><span class="val val-yes">&#10003;</span> Staking, DeFi, governance</td>
+            <td><span class="val val-partial">~</span> Balance only</td>
+            <td><span class="val val-no">&#10005;</span> None</td>
+            <td><span class="val val-partial">~</span> Basic</td>
+          </tr>
+          <!-- DeFi -->
+          <tr>
+            <td class="feature-name">DeFi Protocols</td>
+            <td class="abct-cell"><span class="val val-yes">80+</span> <span class="val-note">multi-chain</span></td>
+            <td><span class="val val-yes">1,000+</span> <span class="val-note">~10 chains</span></td>
+            <td><span class="val val-yes">90+</span> <span class="val-note">EVM only</span></td>
+            <td><span class="val val-yes">700+</span></td>
+          </tr>
+          <!-- Exchanges -->
+          <tr>
+            <td class="feature-name">Exchange Integrations</td>
+            <td class="abct-cell"><span class="val val-yes">10+</span></td>
+            <td><span class="val val-yes">60+</span> <span class="val-note">13 via API</span></td>
+            <td><span class="val val-yes">20+</span></td>
+            <td><span class="val val-partial">8</span></td>
+          </tr>
+          <!-- NFTs -->
+          <tr>
+            <td class="feature-name">NFT Tracking</td>
+            <td class="abct-cell"><span class="val val-yes">&#10003;</span> Multi-chain gallery</td>
+            <td><span class="val val-partial">~</span> ETH + Base</td>
+            <td><span class="val val-partial">~</span> EVM gallery</td>
+            <td><span class="val val-yes">&#10003;</span> Cross-chain</td>
+          </tr>
+          <!-- Self-Hosted -->
+          <tr>
+            <td class="feature-name">Self-Hosted</td>
+            <td class="abct-cell"><span class="val val-yes">&#10003;</span> Docker</td>
+            <td><span class="val val-no">&#10005;</span> Cloud only</td>
+            <td><span class="val val-yes">&#10003;</span> Docker / Desktop</td>
+            <td><span class="val val-no">&#10005;</span> Cloud only</td>
+          </tr>
+          <!-- Data Privacy -->
+          <tr>
+            <td class="feature-name">Data Privacy</td>
+            <td class="abct-cell"><span class="val val-yes">&#10003;</span> Your hardware</td>
+            <td><span class="val val-no">&#10005;</span> Cloud-stored</td>
+            <td><span class="val val-yes">&#10003;</span> Local-first</td>
+            <td><span class="val val-no">&#10005;</span> Cloud-stored</td>
+          </tr>
+          <!-- Mobile -->
+          <tr class="last-row">
+            <td class="feature-name">Mobile App</td>
+            <td class="abct-cell"><span class="val val-yes">&#10003;</span> iOS + watchOS</td>
+            <td><span class="val val-yes">&#10003;</span> iOS, Android, watchOS</td>
+            <td><span class="val val-no">&#10005;</span> None</td>
+            <td><span class="val val-no">&#10005;</span> Web only</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="comparison-note">
+      Based on publicly available feature lists as of February 2026.
+    </p>
+  </div>
+</section>
+
+<style>
+  .comparison-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 680px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 14px 18px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.88rem;
+    vertical-align: middle;
+  }
+
+  .comparison-table thead th {
+    padding: 20px 18px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    background: rgba(15, 52, 96, 0.3);
+    letter-spacing: 0.02em;
+  }
+
+  .last-row td {
+    border-bottom: none;
+  }
+
+  /* Feature name column */
+  .feature-col {
+    text-align: left !important;
+    min-width: 140px;
+  }
+
+  .feature-name {
+    text-align: left !important;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.88rem;
+    white-space: nowrap;
+  }
+
+  /* ABCT column highlight */
+  .abct-col {
+    background: rgba(0, 210, 106, 0.06);
+    border-left: 2px solid rgba(0, 210, 106, 0.3);
+    border-right: 2px solid rgba(0, 210, 106, 0.3);
+    border-top: 2px solid rgba(0, 210, 106, 0.3);
+  }
+
+  .abct-cell {
+    background: rgba(0, 210, 106, 0.03);
+    border-left: 2px solid rgba(0, 210, 106, 0.15);
+    border-right: 2px solid rgba(0, 210, 106, 0.15);
+  }
+
+  .last-row .abct-cell {
+    border-bottom: 2px solid rgba(0, 210, 106, 0.3);
+  }
+
+  /* Column headers */
+  .col-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    line-height: 1.3;
+  }
+
+  .abct-header {
+    justify-content: center;
+  }
+
+  .col-logo {
+    border-radius: 6px;
+  }
+
+  /* Other column headers */
+  .other-col .col-header {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .badge-free {
+    background: rgba(0, 210, 106, 0.12);
+    color: var(--accent);
+    border: 1px solid rgba(0, 210, 106, 0.25);
+  }
+
+  .badge-paid {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+    border: 1px solid rgba(255, 193, 7, 0.2);
+  }
+
+  .badge-expensive {
+    background: rgba(255, 107, 107, 0.1);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+  }
+
+  /* Value indicators */
+  .val {
+    font-weight: 700;
+    margin-right: 2px;
+  }
+
+  .val-yes {
+    color: var(--accent);
+  }
+
+  .val-partial {
+    color: #ffc107;
+  }
+
+  .val-limited {
+    color: var(--text-muted);
+  }
+
+  .val-no {
+    color: #ff6b6b;
+  }
+
+  .val-note {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  /* Disclaimer */
+  .comparison-note {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* Hover row highlight */
+  .comparison-table tbody tr {
+    transition: background 0.15s ease;
+  }
+
+  .comparison-table tbody tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .comparison-table tbody tr:hover .abct-cell {
+    background: rgba(0, 210, 106, 0.06);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .comparison-wrap {
+      margin: 0 -12px;
+      border-radius: 12px;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 12px 14px;
+      font-size: 0.82rem;
+    }
+
+    .feature-name {
+      font-size: 0.82rem;
+    }
+  }
+</style>
