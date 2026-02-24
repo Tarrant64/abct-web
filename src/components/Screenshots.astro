@@ -69,7 +69,7 @@ const tabs = [
           </svg>
         </button>
 
-        <div class="slider-viewport" data-viewport>
+        <div class:list={['slider-viewport', `slider-viewport--${tab.id}`]} data-viewport>
           {tab.slides.map((slide, j) => (
             <div class:list={['slide', `slide--${tab.id}`]}>
               <div class:list={['slide-img', `slide-img--${tab.id}`]}>
@@ -174,6 +174,23 @@ const tabs = [
 
   .slider-viewport::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Center watchOS slides (all 3 fit in viewport) */
+  .slider-viewport--watchos {
+    justify-content: center;
+    flex: 1;
+  }
+
+  /* End spacer so last slide can scroll to center position */
+  .slider-viewport--mobile::after {
+    content: '';
+    flex: 0 0 max(0px, calc(50% - 140px));
+  }
+
+  .slider-viewport--dashboard::after {
+    content: '';
+    flex: 0 0 max(0px, calc(50% - 300px));
   }
 
   /* Slide variants */
@@ -309,6 +326,14 @@ const tabs = [
 
     .slide--watchos {
       flex: 0 0 55vw;
+    }
+
+    .slider-viewport--mobile::after {
+      flex-basis: max(0px, calc(50% - 35vw));
+    }
+
+    .slider-viewport--dashboard::after {
+      flex-basis: max(0px, calc(50% - 42.5vw));
     }
 
     .slider-arrow {

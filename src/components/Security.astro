@@ -1,0 +1,185 @@
+---
+---
+
+<section class="section security" id="security">
+  <div class="container">
+    <h2 class="section-title">Built-in Wallet Security</h2>
+    <p class="section-subtitle">
+      Four dedicated security scanners — all read-only, all built in. No extensions, no third-party apps.
+    </p>
+    <div class="security-grid">
+
+      <!-- Token Approval Security -->
+      <div class="card security-card">
+        <span class="security-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L3 7v6c0 5.25 3.75 10.14 9 11.25 5.25-1.11 9-6 9-11.25V7l-9-5z"/>
+            <path d="M12 9v4M12 17h.01"/>
+          </svg>
+        </span>
+        <h3 class="security-title">Token Approval Security</h3>
+        <p class="security-description">Scans ERC-20 approvals for unlimited spend amounts, stale contracts, and risky spenders across 7 EVM chains.</p>
+        <div class="chain-tags">
+          <span class="chain-tag">ETH</span>
+          <span class="chain-tag">MATIC</span>
+          <span class="chain-tag">BSC</span>
+          <span class="chain-tag">ARB</span>
+          <span class="chain-tag">BASE</span>
+          <span class="chain-tag">AVAX</span>
+          <span class="chain-tag">OP</span>
+        </div>
+        <span class="api-note api-note-yellow">Requires Moralis API key (free)</span>
+      </div>
+
+      <!-- Spam Token Detection -->
+      <div class="card security-card">
+        <span class="security-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/>
+          </svg>
+        </span>
+        <h3 class="security-title">Spam Token Detection</h3>
+        <p class="security-description">Identifies known spam and scam tokens in your wallets. Hide them from your portfolio with one click.</p>
+        <div class="chain-tags">
+          <span class="chain-tag">ETH</span>
+          <span class="chain-tag">MATIC</span>
+          <span class="chain-tag">BSC</span>
+          <span class="chain-tag">ARB</span>
+          <span class="chain-tag">BASE</span>
+          <span class="chain-tag">AVAX</span>
+          <span class="chain-tag">OP</span>
+          <span class="chain-tag">SOL</span>
+        </div>
+        <span class="api-note api-note-yellow">Requires Moralis API key (free)</span>
+      </div>
+
+      <!-- Address Poisoning Scanner -->
+      <div class="card security-card">
+        <span class="security-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </span>
+        <h3 class="security-title">Address Poisoning Scanner</h3>
+        <p class="security-description">Detects dust attacks and lookalike addresses planted in your transaction history to trick you into sending funds to the wrong address.</p>
+        <div class="chain-tags">
+          <span class="chain-tag chain-tag-accent">ALL CHAINS</span>
+        </div>
+        <span class="api-note api-note-green">No API key needed</span>
+      </div>
+
+      <!-- Cardano Shield Scanner -->
+      <div class="card security-card">
+        <span class="security-icon">
+          <img src="/images/chains/cardano.png" alt="Cardano" width="30" height="30" />
+        </span>
+        <h3 class="security-title">Cardano Shield Scanner</h3>
+        <p class="security-description">Cross-references your Cardano tokens against the Shield blacklist and Cardano Foundation Token Registry to flag known threats.</p>
+        <div class="chain-tags">
+          <span class="chain-tag">ADA</span>
+        </div>
+        <span class="api-note api-note-green">No API key needed</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .security {
+    background: linear-gradient(180deg, var(--bg-primary), rgba(15, 52, 96, 0.15), var(--bg-primary));
+  }
+
+  .security-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .security-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px;
+    border-top: 2px solid transparent;
+    transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+
+  .security-card:hover {
+    border-top-color: var(--accent);
+  }
+
+  .security-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 210, 106, 0.08);
+    border-radius: 12px;
+  }
+
+  .security-icon img {
+    border-radius: 50%;
+  }
+
+  .security-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .security-description {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .chain-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+
+  .chain-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .chain-tag-accent {
+    background: rgba(0, 210, 106, 0.1);
+    color: var(--accent);
+    border-color: rgba(0, 210, 106, 0.25);
+  }
+
+  .api-note {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .api-note-green {
+    color: var(--accent);
+  }
+
+  .api-note-yellow {
+    color: #ffc107;
+  }
+
+  @media (max-width: 768px) {
+    .security-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
