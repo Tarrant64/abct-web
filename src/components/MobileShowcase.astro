@@ -286,17 +286,19 @@ const watchGlances = [
     overflow: hidden;
     line-height: 0;
   }
-  .frame img { width: 100%; height: auto; }
+  /* img is rendered by the child <Pic> component, so these rules must be
+     :global to escape Astro style scoping (squared corners bug, 2026-11-23) */
+  .frame :global(img) { width: 100%; height: auto; }
   .frame-phone { border-radius: 34px; padding: 6px; }
-  .frame-phone img { border-radius: 28px; }
+  .frame-phone :global(img) { border-radius: 28px; }
   .frame-ipad { border-radius: 22px; padding: 8px; }
-  .frame-ipad img { border-radius: 14px; }
+  .frame-ipad :global(img) { border-radius: 14px; }
   .frame-duo { border-radius: 26px; padding: 7px; }
-  .frame-duo img { border-radius: 19px; }
+  .frame-duo :global(img) { border-radius: 19px; }
   .frame-watch { border-radius: 44px; padding: 7px; }
-  .frame-watch img { border-radius: 37px; }
+  .frame-watch :global(img) { border-radius: 37px; }
   .frame-card { border-radius: 24px; padding: 6px; }
-  .frame-card img { border-radius: 18px; }
+  .frame-card :global(img) { border-radius: 18px; }
 
   /* Hero composition */
   .hero-devices {
@@ -449,7 +451,7 @@ const watchGlances = [
     .hd-phone { width: 34%; }
     .hd-watch { width: 20%; }
     .frame-phone { border-radius: 24px; padding: 4px; }
-    .frame-phone img { border-radius: 20px; }
+    .frame-phone :global(img) { border-radius: 20px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .strip { scroll-behavior: auto; }
