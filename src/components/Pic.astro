@@ -1,0 +1,32 @@
+---
+// Responsive <picture> for the V2 showcase images in /images/v2 (AVIF + WebP + JPEG fallback, two widths each).
+// Intrinsic size comes from src/data/v2-images.json (written by the image optimiser) so there is no layout shift.
+import manifest from '../data/v2-images.json';
+
+interface Props {
+  name: string;   // e.g. "iphone-aurora-portfolio"
+  alt: string;
+  sizes: string;  // responsive sizes attribute
+  eager?: boolean;
+}
+const { name, alt, sizes, eager = false } = Astro.props;
+const entry = (manifest as Record<string, { w: number; h: number }>)[name];
+if (!entry) throw new Error(`Unknown V2 image: ${name}`);
+const large = entry.w;
+const small = Math.round(large / 2);
+const set = (ext: string) => `/images/v2/${name}-${small}.${ext} ${small}w, /images/v2/${name}-${large}.${ext} ${large}w`;
+---
+<picture>
+  <source type="image/avif" srcset={set('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={set('webp')} sizes={sizes} />
+  <img
+    src={`/images/v2/${name}-${large}.jpg`}
+    srcset={set('jpg')}
+    sizes={sizes}
+    alt={alt}
+    width={entry.w}
+    height={entry.h}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding={eager ? 'sync' : 'async'}
+  />
+</picture>

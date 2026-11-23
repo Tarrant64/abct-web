@@ -36,6 +36,12 @@
       </a>
     </div>
 
+    <a class="hero-v2" href="/#v2">
+      <span class="hero-v2-tag">Coming soon</span>
+      ABCT V2 for iPhone, iPad &amp; Apple Watch
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+
     <div class="word-flow" aria-hidden="true">
       <span>Layer 1</span><span>DeFi</span><span>Multi-Chain</span><span>Layer 2</span><span>NFTs</span><span>Staking</span><span>Governance</span><span>Privacy</span><span>Exchanges</span><span>Liquid Staking</span><span>Layer 0</span><span>DePIN</span><span>RWAs</span><span>DEX</span><span>DAOs</span><span>ZK</span><span>AI Agents</span><span>Lending</span><span>Cross-Chain</span><span>Rollups</span><span>Perpetuals</span><span>CEX</span><span>Bridges</span><span>Yield</span><span>Oracles</span><span>Restaking</span><span>GameFi</span><span>Memecoins</span><span>Modular</span><span>SocialFi</span><span>Sidechains</span>
     </div>
@@ -94,6 +100,32 @@
     display: flex;
     gap: 16px;
     margin-bottom: 64px;
+  }
+
+  .hero-v2 {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 18px;
+    margin: -32px 0 48px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .hero-v2:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-v2-tag {
+    padding: 2px 10px;
+    border-radius: 100px;
+    background: rgba(255, 176, 64, 0.14);
+    color: #ffc266;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   /* Word Flow */

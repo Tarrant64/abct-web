@@ -1,0 +1,186 @@
+{
+ "duo-closed-dashboard": {
+  "w": 1280,
+  "h": 1862
+ },
+ "duo-open-dashboard": {
+  "w": 1280,
+  "h": 900
+ },
+ "duo-open-defi": {
+  "w": 1280,
+  "h": 900
+ },
+ "ipadmini-aurora-assets": {
+  "w": 960,
+  "h": 1462
+ },
+ "ipadmini-aurora-defi": {
+  "w": 960,
+  "h": 1462
+ },
+ "ipadmini-aurora-nfts": {
+  "w": 960,
+  "h": 1462
+ },
+ "ipadmini-aurora-performance": {
+  "w": 960,
+  "h": 1462
+ },
+ "ipadmini-aurora-settings": {
+  "w": 960,
+  "h": 1462
+ },
+ "ipadpro-aurora-asset": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-assets": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-defi": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-nfts": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-performance": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-portfolio": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-privacy": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-aurora-settings": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-light-assets": {
+  "w": 960,
+  "h": 1280
+ },
+ "ipadpro-light-portfolio": {
+  "w": 960,
+  "h": 1280
+ },
+ "iphone-aurora-asset": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-assets": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-defi": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-exchanges": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-nfts": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-performance": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-portfolio-1w": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-portfolio": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-privacy": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-settings": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-transactions": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-aurora-widget": {
+  "w": 720,
+  "h": 1253
+ },
+ "iphone-cypherpunk-asset": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-cypherpunk-performance": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-cypherpunk-portfolio": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-cypherpunk-privacy": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-cypherpunk-widget": {
+  "w": 720,
+  "h": 1253
+ },
+ "iphone-light-asset": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-light-performance": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-light-portfolio": {
+  "w": 720,
+  "h": 1565
+ },
+ "iphone-light-widget": {
+  "w": 720,
+  "h": 1253
+ },
+ "watch-aurora-glance": {
+  "w": 400,
+  "h": 477
+ },
+ "watch-comps-privacy": {
+  "w": 400,
+  "h": 477
+ },
+ "watch-comps": {
+  "w": 400,
+  "h": 477
+ },
+ "watch-cypherpunk-glance": {
+  "w": 400,
+  "h": 477
+ },
+ "watch-light-glance": {
+  "w": 400,
+  "h": 477
+ },
+ "watch-privacy": {
+  "w": 400,
+  "h": 477
+ },
+ "watch-stale": {
+  "w": 400,
+  "h": 477
+ }
+}
