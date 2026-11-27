@@ -1,0 +1,359 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Pro Setup Guide — A Better Crypto Tracker"
+        description="Interactive walkthrough: pick your chains and platform, get a minimal .env, deploy the ABCT backend, expose it safely (Cloudflare Tunnel, VPN, or LAN-only), and connect the mobile app.">
+  <Header />
+  <main class="setup-page">
+    <section class="setup-hero">
+      <div class="wrap">
+        <span class="pill">ABCT Pro · self-hosted setup</span>
+        <h1>Set up Pro in four steps</h1>
+        <p class="lede">
+          Pro connects to <strong>your own</strong> ABCT server, running on hardware you control.
+          You create the accounts and API keys — the app never shares access with anyone else.
+          Make your selections below and every command block updates to match.
+        </p>
+        <div class="lite-note">
+          <strong>Using Lite right now?</strong> Lite works entirely on your device — nothing here is
+          required for it. When you're ready for wallets + exchanges + DeFi tracking, work top to bottom,
+          then finish in the app: <em>Settings → Mode → Pro → "My server is ready"</em>.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 1: CHAINS ============ -->
+    <section class="step" id="step-chains">
+      <div class="wrap">
+        <h2><span class="stepnum">1</span> Pick the chains you want to track</h2>
+        <p class="stepnote">Only the providers your selections need appear below. Everything unselected
+        stays keyless — Bitcoin, XRP, Tron and most chains need no account at all.</p>
+
+        <div class="chain-grid">
+          <label class="chain-card"><input type="checkbox" id="chain-cardano" checked onchange="refresh()" />
+            <div><strong>Cardano</strong><span>balances, staking, native assets, DeFi</span></div></label>
+          <label class="chain-card"><input type="checkbox" id="chain-evm" checked onchange="refresh()" />
+            <div><strong>Ethereum + L2s</strong><span>ETH, Base, Arbitrum, Optimism, Polygon…</span></div></label>
+          <label class="chain-card"><input type="checkbox" id="chain-solana" onchange="refresh()" />
+            <div><strong>Solana</strong><span>SOL + SPL token balances</span></div></label>
+          <label class="chain-card"><input type="checkbox" id="chain-free" checked onchange="refresh()" />
+            <div><strong>Keyless chains</strong><span>BTC, XRP, Tron, Hedera, Sui, Cosmos… no account</span></div></label>
+        </div>
+
+        <h3>Your .env keys</h3>
+        <p class="stepnote">Create each free account, paste the key into <code>.env</code> (step 2 creates the file).
+        Copy the block with the button — comments included.</p>
+        <div class="codebox">
+          <button class="copybtn" data-copy="envblock">Copy</button>
+          <pre id="envblock"></pre>
+        </div>
+
+        <h3>Where each key comes from</h3>
+        <div id="keytable" class="keytable"></div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 2: PLATFORM ============ -->
+    <section class="step" id="step-platform">
+      <div class="wrap">
+        <h2><span class="stepnum">2</span> Pick where the server runs</h2>
+        <p class="stepnote">Any Docker-capable machine works: an old laptop, a NAS, a Raspberry Pi 4+,
+        or a small VPS. The server is read-only — it can never move funds.</p>
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-tab="plat-docker" onclick="pick(this,'plat')">Docker (any machine)</button>
+          <button class="tab" data-tab="plat-unraid" onclick="pick(this,'plat')">Unraid</button>
+          <button class="tab" data-tab="plat-vps" onclick="pick(this,'plat')">VPS / remote server</button>
+        </div>
+
+        <div class="tabpanel on" id="plat-docker">
+          <ol class="steps-ol">
+            <li>Install <a href="https://docs.docker.com/get-docker/" target="_blank" rel="noopener">Docker Desktop</a> (Windows/macOS) or Docker Engine (Linux).</li>
+            <li>Run the commands, then edit <code>.env</code> with the keys from step 1:</li>
+          </ol>
+          <div class="codebox"><button class="copybtn" data-copy="cmd-docker">Copy</button>
+            <pre id="cmd-docker">git clone https://github.com/Tarrant64/abct.git
+cd abct
+cp .env.example .env
+nano .env        # paste your keys (or any editor)
+
+cd abct-docker
+docker compose up -d
+# Dashboard: http://localhost:8080</pre></div>
+        </div>
+
+        <div class="tabpanel" id="plat-unraid">
+          <ol class="steps-ol">
+            <li>Open the Unraid terminal (web UI → <em>&gt;_</em> icon).</li>
+            <li>The helper script clones, builds and starts the stack:</li>
+          </ol>
+          <div class="codebox"><button class="copybtn" data-copy="cmd-unraid">Copy</button>
+            <pre id="cmd-unraid">git clone https://github.com/Tarrant64/abct.git ~/abct-src
+cd ~/abct-src
+cp .env.example .env
+nano .env        # paste your keys
+
+cd abct-docker
+./deploy_from_git.sh   # pulls, builds, starts; re-run after edits</pre></div>
+          <p class="stepnote">Re-run <code>deploy_from_git.sh</code> whenever you change <code>.env</code> or want an update.</p>
+        </div>
+
+        <div class="tabpanel" id="plat-vps">
+          <ol class="steps-ol">
+            <li>SSH into the server (any 1&nbsp;GB+ VPS with Docker works).</li>
+            <li>Same commands as a local machine — the dashboard listens on port 8080:</li>
+          </ol>
+          <div class="codebox"><button class="copybtn" data-copy="cmd-vps">Copy</button>
+            <pre id="cmd-vps">ssh you@your-vps
+git clone https://github.com/Tarrant64/abct.git
+cd abct
+cp .env.example .env
+nano .env
+
+cd abct-docker
+docker compose up -d</pre></div>
+          <p class="stepnote">Do <strong>not</strong> open port 8080 to the internet — use step 3 to expose the
+          dashboard safely.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 3: EXPOSURE ============ -->
+    <section class="step" id="step-exposure">
+      <div class="wrap">
+        <h2><span class="stepnum">3</span> Decide how your phone reaches the server</h2>
+        <p class="stepnote">Three safe options. All of them keep the dashboard closed to the open internet.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="tab on" data-tab="exp-cf" onclick="pick(this,'exp')">Cloudflare Tunnel + Access (recommended)</button>
+          <button class="tab" data-tab="exp-vpn" onclick="pick(this,'exp')">VPN (Tailscale / WireGuard)</button>
+          <button class="tab" data-tab="exp-lan" onclick="pick(this,'exp')">Home network only</button>
+        </div>
+
+        <div class="tabpanel on" id="exp-cf">
+          <p class="stepnote">An outbound-only tunnel: no open ports, a Cloudflare login wall in front of the
+          dashboard, and per-device service tokens the app can use. Free plan is enough.</p>
+          <ol class="steps-ol">
+            <li><strong>Add your domain to Cloudflare</strong> (free): <a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">dash.cloudflare.com</a> → Add a site. If your domain is already on Cloudflare, skip.</li>
+            <li><strong>Create the tunnel:</strong> Zero Trust → Networks → Tunnels → <em>Create a tunnel</em> → Cloudflared. Name it <code>abct</code>.</li>
+            <li><strong>Install the connector</strong> on the server with the command Cloudflare shows
+                (a single <code>cloudflared service install &lt;token&gt;</code> line — copy it from the dashboard).
+                <em>Alternative:</em> ABCT also has a built-in tunnel — dashboard → Settings → Cloudflare Tunnel → paste the same token. It survives container rebuilds automatically.</li>
+            <li><strong>Public hostname:</strong> in the tunnel's Public Hostname tab add
+                <code>abct.yourdomain.com</code> → service <code>http://&lt;server-ip&gt;:8080</code>.</li>
+            <li><strong>Put Access in front:</strong> Zero Trust → Access → Applications → <em>Add a self-hosted app</em> → domain <code>abct.yourdomain.com</code>. Policy: Email → <em>your own email</em> (One-time PIN). Now the browser dashboard asks for a code only you receive.</li>
+            <li><strong>Service token for the app:</strong> Zero Trust → Access → Service Auth → Service Tokens → <em>Create</em>. Keep the Client ID and Client Secret — the app asks for them in step 4 (the secret is shown once).</li>
+            <li>Test: open <code>https://abct.yourdomain.com</code> in a browser, enter your email code, and the dashboard appears.</li>
+          </ol>
+        </div>
+
+        <div class="tabpanel" id="exp-vpn">
+          <p class="stepnote">Your phone joins your home network from anywhere through a VPN you own.
+          No third-party proxy in the path, and the dashboard never touches the internet at all.</p>
+          <ol class="steps-ol">
+            <li><strong>Install Tailscale</strong> (free, <a href="https://tailscale.com/" target="_blank" rel="noopener">tailscale.com</a>) on the server and on your phone, and sign both into the same account. Prefer plain WireGuard? Any self-hosted wg server works the same way — note its address.</li>
+            <li><strong>Find the server's VPN address:</strong> in the Tailscale admin console it looks like <code>100.x.y.z</code>.</li>
+            <li>That's the whole setup. In the app (step 4) create a <strong>Local</strong> profile with
+                <code>http://100.x.y.z:8080</code> — the app allows plain http only for local/VPN hosts.</li>
+          </ol>
+          <div class="codebox"><button class="copybtn" data-copy="cmd-vpn">Copy</button>
+            <pre id="cmd-vpn"># On the server (Linux): install + join
+curl -fsSL https://tailscale.com/install.sh | sh
+tailscale up
+tailscale ip -4    # prints the 100.x.y.z address for the app profile</pre></div>
+          <p class="stepnote">Trade-off vs the tunnel: the VPN must be connected on the phone before data loads;
+          in exchange, nothing is exposed through any provider's edge.</p>
+        </div>
+
+        <div class="tabpanel" id="exp-lan">
+          <p class="stepnote">Simplest option: the app works when your phone is on the same Wi-Fi as the server.
+          Nothing is ever reachable from outside your home.</p>
+          <ol class="steps-ol">
+            <li>Note the server's LAN IP (e.g. <code>192.168.1.50</code>).</li>
+            <li>In the app (step 4) create a <strong>Local</strong> profile with <code>http://192.168.1.50:8080</code>.</li>
+          </ol>
+          <p class="stepnote">Tip: give the server a static DHCP reservation in your router so the address never changes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 4: CONNECT THE APP ============ -->
+    <section class="step" id="step-app">
+      <div class="wrap">
+        <h2><span class="stepnum">4</span> Connect the app</h2>
+        <ol class="steps-ol">
+          <li>In ABCT: <strong>Settings → Mode → Pro</strong>. If you haven't set up a server yet, tap
+              <em>"My server is ready"</em> in the prompt — the app takes you straight to profile setup.</li>
+          <li><strong>Profiles → +</strong> and fill in:
+            <ul class="steps-ul">
+              <li><em>Name</em>: anything ("Home server").</li>
+              <li><em>Base URL</em>: <code>https://abct.yourdomain.com</code> (Tunnel) or <code>http://&lt;server-ip&gt;:8080</code> (VPN / LAN, type <em>Local</em>).</li>
+              <li><em>Type</em>: Cloudflare (Tunnel) or Local (VPN / home network).</li>
+              <li><em>Cloudflare Access service token</em> (Tunnel only): the Client ID + Client Secret from step 3.6.</li>
+            </ul>
+          </li>
+          <li>Save → the app connects, asks for sign-in if your server has authentication enabled, and your portfolio loads.</li>
+          <li>Optional: switch to Lite later and use <strong>Settings → Clone current data</strong> — Lite keeps a snapshot on-device, so both modes can live side by side.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ SECURITY + TROUBLESHOOTING ============ -->
+    <section class="step" id="step-security">
+      <div class="wrap">
+        <h2>Security rules of thumb</h2>
+        <ul class="steps-ul">
+          <li>Every API key is <strong>read-only</strong> — never grant withdrawal or trading permissions anywhere.</li>
+          <li>Never port-forward the dashboard directly to the internet. Use a tunnel or a VPN (step 3).</li>
+          <li>Keys are encrypted at rest by the server; the app keeps its Access tokens in the iOS Keychain.</li>
+          <li>The server can only <em>read</em> balances. It cannot move funds.</li>
+        </ul>
+        <h2>If something doesn't connect</h2>
+        <ul class="steps-ul">
+          <li><strong>"Not signed in" / session expired</strong> — normal after inactivity; tap Sign in.</li>
+          <li><strong>Tunnel profile fails</strong> — check the service token Client ID/Secret, and that the Access application's policy allows service tokens.</li>
+          <li><strong>Local profile fails</strong> — VPN connected? Server IP right? <code>curl http://&lt;ip&gt;:8080</code> from a machine on the same network answers first.</li>
+          <li><strong>Prices missing</strong> — add a CoinGecko key (free) in <code>.env</code> or in Settings → API keys.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+<script is:inline>
+  // ---- key metadata: chain -> (env lines, provider rows) ----
+  var KEYS = {
+    cardano: {
+      env: [
+        '',
+        '# REQUIRED for Cardano — blockfrost.io (free tier: 50,000 requests/day)',
+        'BLOCKFROST_API_KEY=mainnetPASTE_YOURS_HERE',
+        '',
+        '# RECOMMENDED — staking positions + rewards — cexplorer.io',
+        'CEXPLORER_API_KEY=PASTE_YOURS_HERE',
+      ],
+      rows: [
+        ['Blockfrost', 'Cardano balances, assets, metadata', 'https://blockfrost.io', 'Free: 50k req/day'],
+        ['CExplorer', 'Stake pools, rewards history', 'https://cexplorer.io', 'Free tier available'],
+      ],
+    },
+    evm: {
+      env: [
+        '',
+        '# Ethereum + EVM L2s — alchemy.com (free tier)',
+        'ALCHEMY_API_KEY=PASTE_YOURS_HERE',
+        '',
+        '# EVM transactions fallback — etherscan.io (free: 5 calls/s)',
+        'ETHERSCAN_API_KEY=PASTE_YOURS_HERE',
+      ],
+      rows: [
+        ['Alchemy', 'ETH/Polygon/Base NFTs + enhanced EVM data', 'https://alchemy.com', 'Free tier'],
+        ['Etherscan', 'EVM transaction history', 'https://etherscan.io/apis', 'Free: 100k/day'],
+      ],
+    },
+    solana: {
+      env: ['', '# Solana — helius.dev (free: 1M credits/month)', 'HELIUS_API_KEY=PASTE_YOURS_HERE'],
+      rows: [['Helius', 'Solana balances + tokens', 'https://helius.dev', 'Free: 1M credits/mo']],
+    },
+  };
+  var FREE_ENV = [
+    '',
+    '# Keyless chains need NO keys (Bitcoin, XRP, Tron, Hedera, Sui, Cosmos, ...)',
+    '# Prices (optional but recommended): coingecko.com free tier',
+    'COINGECKO_API_KEY=PASTE_YOURS_HERE',
+  ];
+
+  function esc(s) { return s.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+  function refresh() {
+    var parts = [], rows = [];
+    if (document.getElementById('chain-cardano').checked) { parts = parts.concat(KEYS.cardano.env); rows = rows.concat(KEYS.cardano.rows); }
+    if (document.getElementById('chain-evm').checked)     { parts = parts.concat(KEYS.evm.env);     rows = rows.concat(KEYS.evm.rows); }
+    if (document.getElementById('chain-solana').checked)  { parts = parts.concat(KEYS.solana.env);  rows = rows.concat(KEYS.solana.rows); }
+    if (document.getElementById('chain-free').checked)    { parts = parts.concat(FREE_ENV); }
+    var text = '# ABCT backend — .env (generated from your selections)\n' + parts.join('\n');
+    document.getElementById('envblock').textContent = text;
+    var t = document.getElementById('keytable');
+    t.innerHTML = rows.map(function(r) {
+      return '<div class="keyrow"><strong>' + r[0] + '</strong><span>' + r[1] +
+             '</span><a href="' + r[2] + '" target="_blank" rel="noopener">' + r[2].replace('https://','') + '</a><em>' + r[3] + '</em></div>';
+    }).join('');
+  }
+
+  function pick(btn, group) {
+    btn.parentElement.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
+    btn.classList.add('on');
+    document.querySelectorAll('.tabpanel').forEach(function(p){
+      if (p.id.indexOf(group + '-') === 0) p.classList.toggle('on', p.id === btn.dataset.tab);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    var b = e.target.closest('.copybtn');
+    if (!b) return;
+    var pre = document.getElementById(b.dataset.copy);
+    navigator.clipboard.writeText(pre.textContent).then(function() {
+      b.textContent = 'Copied!'; setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+    });
+  });
+
+  refresh();
+</script>
+
+<style>
+  .setup-page { color: var(--text-primary); }
+  .setup-page .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+  .setup-hero { padding: 4rem 0 2rem; text-align: center; }
+  .setup-hero h1 { font-size: 2.4rem; margin: 0.6rem 0 1rem; }
+  .setup-hero .lede { max-width: 640px; margin: 0 auto; color: var(--text-secondary); }
+  .pill { display:inline-block; padding: 0.25rem 0.9rem; border-radius: 999px;
+          background: var(--accent-glow); color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+  .lite-note { max-width: 680px; margin: 1.5rem auto 0; padding: 1rem 1.25rem; text-align: left;
+               border: 1px solid var(--accent); border-radius: 12px; background: var(--card-bg);
+               font-size: 0.95rem; color: var(--text-secondary); }
+  .step { padding: 2.5rem 0; border-top: 1px solid rgba(255,255,255,0.06); }
+  .step h2 { font-size: 1.6rem; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+  .stepnum { display:inline-flex; width: 2rem; height: 2rem; border-radius: 50%; background: var(--accent);
+             color: #06281a; align-items: center; justify-content: center; font-size: 1.05rem; flex: none; }
+  .step h3 { margin: 1.5rem 0 0.5rem; }
+  .stepnote { color: var(--text-secondary); font-size: 0.95rem; }
+  .chain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin: 1.25rem 0; }
+  .chain-card { display: flex; gap: 0.75rem; align-items: flex-start; padding: 0.9rem 1rem; cursor: pointer;
+                background: var(--card-bg); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+  .chain-card:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-glow); }
+  .chain-card input { margin-top: 0.25rem; accent-color: var(--accent); }
+  .chain-card strong { display: block; }
+  .chain-card span { color: var(--text-muted); font-size: 0.85rem; }
+  .codebox { position: relative; margin: 1rem 0; }
+  .codebox pre { background: #0d0d1f; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;
+                 padding: 1rem 1.1rem; overflow-x: auto; font-size: 0.85rem; line-height: 1.55;
+                 color: #c8d6e5; }
+  .copybtn { position: absolute; top: 0.6rem; right: 0.6rem; padding: 0.25rem 0.8rem; border-radius: 8px;
+             border: 1px solid var(--accent); background: rgba(13,13,31,0.85); color: var(--accent);
+             font-size: 0.78rem; cursor: pointer; }
+  .copybtn:hover { background: var(--accent-glow); }
+  .keytable { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+  .keyrow { display: grid; grid-template-columns: 130px 1fr auto auto; gap: 0.75rem; align-items: baseline;
+            padding: 0.7rem 1rem; background: var(--card-bg); border-radius: 10px; font-size: 0.9rem; }
+  .keyrow span { color: var(--text-secondary); }
+  .keyrow em { color: var(--text-muted); font-style: normal; white-space: nowrap; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1.25rem 0 0.75rem; }
+  .tab { padding: 0.5rem 1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12);
+         background: transparent; color: var(--text-secondary); cursor: pointer; font-size: 0.9rem; }
+  .tab.on { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+  .tabpanel { display: none; }
+  .tabpanel.on { display: block; }
+  .steps-ol { padding-left: 1.4rem; display: grid; gap: 0.6rem; margin: 1rem 0; color: var(--text-secondary); }
+  .steps-ol li strong, .steps-ul li strong { color: var(--text-primary); }
+  .steps-ul { padding-left: 1.4rem; display: grid; gap: 0.6rem; margin: 1rem 0; color: var(--text-secondary); }
+  .steps-ol a, .steps-ul a { color: var(--accent); }
+  code { background: rgba(0,210,106,0.08); color: var(--accent); padding: 0.1rem 0.4rem; border-radius: 6px;
+         font-size: 0.85em; }
+  @media (max-width: 640px) {
+    .keyrow { grid-template-columns: 1fr; gap: 0.25rem; }
+    .setup-hero h1 { font-size: 1.8rem; }
+  }
+</style>
+</Layout>
